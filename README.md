@@ -2,7 +2,6 @@
 
 [![The MIT License](https://badgen.net/github/license/cerner/terra-framework)](https://badgen.net/github/license/cerner/terra-framework)
 [![GitHub](https://flat.badgen.net/github/release/chouzz/vscode-better-align)](https://github.com/fertioga/extension-vscode-design-patterns)
-[![Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=fertioga.design-patterns)](https://marketplace.visualstudio.com/items?itemName=fertioga.design-patterns)
 [![GithubActions](https://github.com/chouzz/vscode-better-align/actions/workflows/CI.yaml/badge.svg)](https://github.com/fertioga/extension-vscode-design-patterns)
 
 Apply the principal design patterns in your project with just a click.
@@ -25,7 +24,7 @@ If you'd like to help out, fork the [repo](https://github.com/fertioga/extension
 ## License
 
 This work is licensed under [Apache License 2.0](https://opensource.org/licenses/Apache-2.0)
-
+```
 ## If you love this extension
 
 [<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >](https://www.buymeacoffee.com/fertioga)
