@@ -20,11 +20,11 @@ New patterns can be implemented if you make a contribution!
 If you've found a bug, please file at <https://github.com/fertioga/extension-vscode-design-patterns/issues>.
 
 If you'd like to help out, fork the [repo](https://github.com/fertioga/extension-vscode-design-patterns) and submit pull requests.
-
+```
 ## License
 
-This work is licensed under [Apache License 2.0](https://opensource.org/licenses/Apache-2.0)
-```
+This work is licensed under [MIT License](https://github.com/fertioga/extension-vscode-design-patterns/blob/main/LICENSE)
+
 ## If you love this extension
 
 [<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >](https://www.buymeacoffee.com/fertioga)
