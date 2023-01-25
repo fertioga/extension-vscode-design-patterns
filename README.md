@@ -13,14 +13,12 @@ Change the names and use in your project!
 
 New patterns can be implemented if you make a contribution!
 
-```
-
 ## Issues/Contribution
 
 If you've found a bug, please file at <https://github.com/fertioga/extension-vscode-design-patterns/issues>.
 
 If you'd like to help out, fork the [repo](https://github.com/fertioga/extension-vscode-design-patterns) and submit pull requests.
-```
+
 ## License
 
 This work is licensed under [MIT License](https://github.com/fertioga/extension-vscode-design-patterns/blob/main/LICENSE)
