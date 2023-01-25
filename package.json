@@ -1,23 +1,74 @@
 {
-  "name": "designpatterns",
+  "name": "design-patterns",
   "displayName": "DesignPatterns",
-  "description": "",
+  "description": "Build easily the principal design patterns with onde click.",
+  "icon": "img/icon.jpeg",
   "version": "0.0.1",
+  "publisher": "fertioga",
   "engines": {
     "vscode": "^1.74.0"
   },
+  "author": {
+    "name": "Fernando Augusto França",
+    "email": "fertioga@gmail.com"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/fertioga/extension-vscode-design-patterns",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fertioga/extension-vscode-design-patterns"
+  },
   "categories": [
-    "Other"
+    "Other",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "design patterns",
+    "PHP",
+    "patterns",
+    "principal patterns"
   ],
   "activationEvents": [
-    "onCommand:designpatterns.helloWorld"
+    "*"
   ],
   "main": "./out/extension.js",
-  "contributes": {
+  "contributes": {  
+      "menus": {
+        "view/title": [
+            {
+                "command": "designpatterns.refreshEntry",
+                "when": "view == treePatterns",
+                "group": "navigation"
+            }
+        ]
+      },    
+      "views": {
+        "package-explorer": [
+          {
+            "id": "treePatterns",
+            "name": "List",
+            "icon": "media/dep.svg",
+            "contextualTitle": "DesignPatterns"
+          }
+        ]
+      },
+      "viewsContainers": {
+        "activitybar": [
+          {
+            "id": "package-explorer",
+            "title": "DesignPatterns",
+            "icon": "media/dep.svg"
+          }
+        ]
+      },
     "commands": [
       {
-        "command": "designpatterns.helloWorld",
-        "title": "Hello World"
+        "command": "designpatterns.refreshEntry",
+        "title": "Refresh",
+        "icon": {
+            "light": "resources/light/refresh.svg",
+            "dark": "resources/dark/refresh.svg"
+        }
       }
     ]
   },

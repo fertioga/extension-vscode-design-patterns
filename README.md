@@ -1,71 +1,31 @@
-# designpatterns README
+# Design Patterns
 
-This is the README for your extension "designpatterns". After writing up a brief description, we recommend including the following sections.
+[![The MIT License](https://badgen.net/github/license/cerner/terra-framework)](https://badgen.net/github/license/cerner/terra-framework)
+[![GitHub](https://flat.badgen.net/github/release/chouzz/vscode-better-align)](https://github.com/fertioga/extension-vscode-design-patterns)
+[![Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=fertioga.design-patterns)](https://marketplace.visualstudio.com/items?itemName=fertioga.design-patterns)
+[![GithubActions](https://github.com/chouzz/vscode-better-align/actions/workflows/CI.yaml/badge.svg)](https://github.com/fertioga/extension-vscode-design-patterns)
 
-## Features
+Apply the principal design patterns in your project with just a click.
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+## Usage
+Select the path where you want apply the pattern, click in menu Design Pattern and choose your language, category and pattern. Just it!
+You will get all classes, interfaces, implementation and documentation.
+Change the names and use in your project!
 
-For example if there is an image subfolder under your extension project workspace:
+New patterns can be implemented if you make a contribution!
 
-\!\[feature X\]\(images/feature-x.png\)
+```
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+## Issues/Contribution
 
-## Requirements
+If you've found a bug, please file at <https://github.com/fertioga/extension-vscode-design-patterns/issues>.
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+If you'd like to help out, fork the [repo](https://github.com/fertioga/extension-vscode-design-patterns) and submit pull requests.
 
-## Extension Settings
+## License
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
+This work is licensed under [Apache License 2.0](https://opensource.org/licenses/Apache-2.0)
 
-For example:
+## If you love this extension
 
-This extension contributes the following settings:
-
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
-
-## Known Issues
-
-Calling out known issues can help limit users opening duplicate issues against your extension.
-
-## Release Notes
-
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
-
-## Following extension guidelines
-
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
-
-## For more information
-
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >](https://www.buymeacoffee.com/fertioga)
