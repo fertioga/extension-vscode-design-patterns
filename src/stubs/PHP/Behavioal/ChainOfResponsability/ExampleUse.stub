@@ -1,0 +1,16 @@
+<?php 
+
+require '../../vendor/autoload.php';
+
+use YOUR_NAMESPACE\SomeChainValidate1;
+use YOUR_NAMESPACE\SomeChainValidate2;
+use YOUR_NAMESPACE\SomeChainValidate3;
+
+$request = [];
+
+$test = new SomeChainValidate1( // <-- first step to validation
+            new SomeChainValidate2( // <-- secound step to validation
+               new SomeChainValidate3(null) // <-- last step to validation (pass null when the last one)
+            )
+        );
+$test->handler($request);
