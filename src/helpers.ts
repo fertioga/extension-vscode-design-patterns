@@ -2,7 +2,7 @@ import * as vscode from 'vscode';
 
 var fs = require('fs');
 var path = require('path');
-var rootPath = __dirname + '/../src/stubs/';
+var rootPath = __dirname + '/../stubs';
 
 /** 
  * get path to apply the pattern
@@ -48,7 +48,11 @@ export function copyFile( source: string, target: string, newExtention: string )
     /** takeout .stub and put newExtention variable */
     targetFile = changeExtentionFile(targetFile, newExtention);
 
-    fs.writeFileSync(targetFile, fs.readFileSync(source));
+    if ( !fs.existsSync(targetFile) ) {
+    
+        fs.writeFileSync(targetFile, fs.readFileSync(source));
+    
+    }    
 }
 
 /**
