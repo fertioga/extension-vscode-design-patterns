@@ -34,7 +34,7 @@ export function getPatch(): string | undefined {
  * @param target string (file target)
  * @return void
 */
-export function copyFile( source: string, target: string ): void {
+export function copyFile( source: string, target: string, newExtention: string ): void {
 
     let targetFile = target;
 
@@ -44,8 +44,22 @@ export function copyFile( source: string, target: string ): void {
             targetFile = path.join( target, path.basename( source ) );
         }
     }
+    
+    /** takeout .stub and put newExtention variable */
+    targetFile = changeExtentionFile(targetFile, newExtention);
 
     fs.writeFileSync(targetFile, fs.readFileSync(source));
+}
+
+/**
+ * changeExtentionFile - replace .stub to newExtenion param
+ * @param targerFile string
+ * @param newExtention string
+ * @returns string
+ */
+function changeExtentionFile(targerFile: string, newExtention: string): string {
+    
+    return targerFile.replace('stub', newExtention);
 }
 
 /** Copy Folders Recursively with FIles 
@@ -53,7 +67,7 @@ export function copyFile( source: string, target: string ): void {
  * @param target string (path target)
  * @return void
 */
-export function copyFolderRecursive( source: string, target: string | undefined ): void {
+export function copyFolderRecursive( source: string, target: string | undefined, extention: string ): void {
     let files = [];
     let targetFolder = path.join( target, path.basename( source ) );
 
@@ -68,9 +82,9 @@ export function copyFolderRecursive( source: string, target: string | undefined 
 
             var curSource = path.join( source, file );
             if ( fs.lstatSync( curSource ).isDirectory() ) {
-                copyFolderRecursive( curSource, targetFolder ); // call recursive
+                copyFolderRecursive( curSource, targetFolder, extention ); // call recursive
             } else {
-                copyFile( curSource, targetFolder );
+                copyFile( curSource, targetFolder, extention );
             }
 
         } );
@@ -81,7 +95,13 @@ export function copyFolderRecursive( source: string, target: string | undefined 
  * @param patternClicked 
  * @return void
  */
-export function copyPattern(patternClicked?: any): void {
+export function copyPattern(patternClicked?: any, extention?: string|boolean): void {
+
+    let ext: string = "";
+
+    if(extention !== undefined) {
+        ext = extention.toString();
+    }        
 
     let source = rootPath + '/' + patternClicked;
 		let target = getPatch();
@@ -90,7 +110,7 @@ export function copyPattern(patternClicked?: any): void {
       vscode.window.showWarningMessage('Target not defined...');
     }
     
-	copyFolderRecursive( source, target);
+	copyFolderRecursive( source, target, ext);
 
     vscode.window.showInformationMessage('Copy Pattern: ' + patternClicked + ' To: ' + target || "");
   }

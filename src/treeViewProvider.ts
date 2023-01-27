@@ -16,17 +16,17 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
     this.data =     
     [
       new TreeItem(
-          'PHP', 'PHP',
+          'PHP', 'PHP', '',
             [ 
-              new TreeItem('Behavioal','PHP/Behavioal', 
+              new TreeItem('Behavioal','PHP/Behavioal', '', 
                           [ 
-                            new TreeItem('ChainOfResponsability','PHP/Behavioal/ChainOfResponsability')
+                            new TreeItem('ChainOfResponsability','PHP/Behavioal/ChainOfResponsability', 'php')
                           ]
                     ),
-              new TreeItem('Creational','PHP/Creational', 
+              new TreeItem('Creational','PHP/Creational', '',
                           []
                     ),
-              new TreeItem('Structural','PHP/Structural', 
+              new TreeItem('Structural','PHP/Structural', '',
                           []
                     ),
             ]
@@ -60,7 +60,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 
         // validate if is the last one element
         if(e.selection[0].collapsibleState === 0) {
-          helper.copyPattern(e.selection[0].contextValue);
+          helper.copyPattern(e.selection[0].contextValue, e.selection[0].description);
         }
 
     });
@@ -98,12 +98,12 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 class TreeItem extends vscode.TreeItem {
   children: TreeItem[]|undefined;
 
-  constructor(label: string, contextValue: string, children?: TreeItem[]) {
+  constructor(label: string, contextValue: string, description: string, children?: TreeItem[]) {
     super(
-        label,
-        
+        label,       
         children === undefined ? vscode.TreeItemCollapsibleState.None :
                                  vscode.TreeItemCollapsibleState.Collapsed),
+        this.description = description,
         this.contextValue = contextValue,
     this.children = children;
   }
