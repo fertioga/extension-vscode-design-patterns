@@ -1,8 +1,7 @@
 # Design Patterns
 
 [![The MIT License](https://badgen.net/github/license/cerner/terra-framework)](https://badgen.net/github/license/cerner/terra-framework)
-[![GitHub](https://flat.badgen.net/github/release/chouzz/vscode-better-align)](https://github.com/fertioga/extension-vscode-design-patterns)
-[![GithubActions](https://github.com/chouzz/vscode-better-align/actions/workflows/CI.yaml/badge.svg)](https://github.com/fertioga/extension-vscode-design-patterns)
+[![GitHub](https://github.com/fertioga/extension-vscode-design-patterns)](https://github.com/fertioga/extension-vscode-design-patterns)
 
 Apply the principal design patterns in your project with just a click.
 
