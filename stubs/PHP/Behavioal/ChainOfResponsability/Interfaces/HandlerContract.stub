@@ -1,6 +1,6 @@
 <?php 
 
-namespace YOUR_NAMESPACE\ChainOfResponsability\Interfaces;
+namespace YOUR_NAMESPACE\Interfaces;
 
 interface HandlerContract 
 {

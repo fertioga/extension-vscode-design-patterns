@@ -1,6 +1,6 @@
 <?php 
 
-require '../../vendor/autoload.php';
+require 'AUTOLOAD_PATH'; // <-- verify autoload path
 
 use YOUR_NAMESPACE\SomeChainValidate1;
 use YOUR_NAMESPACE\SomeChainValidate2;

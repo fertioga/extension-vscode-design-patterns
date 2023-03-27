@@ -2,6 +2,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as helper from './helpers';
+import { Director } from './languages/Director';
 
 export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
   
@@ -20,7 +21,11 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
             [ 
               new TreeItem('Behavioal','PHP/Behavioal', '', 
                           [ 
-                            new TreeItem('ChainOfResponsability','PHP/Behavioal/ChainOfResponsability', 'php')
+                            new TreeItem('ChainOfResponsability','PHP/Behavioal/ChainOfResponsability', '',
+                            [
+                              new TreeItem('Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem('Apply','PHP/Behavioal/ChainOfResponsability','php')
+                            ])
                           ]
                     ),
               new TreeItem('Creational','PHP/Creational', '',
@@ -48,7 +53,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
     // build
     vscode.window.registerTreeDataProvider('treePatterns', this);
 
-    vscode.commands.registerCommand('Update-TreeView', () => {
+    vscode.commands.registerCommand('designpatterns.refreshEntry', () => {
         this.refresh();
     });
 
@@ -60,7 +65,14 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 
         // validate if is the last one element
         if(e.selection[0].collapsibleState === 0) {
-          helper.copyPattern(e.selection[0].contextValue, e.selection[0].description);
+
+          if(e.selection[0].contextValue, e.selection[0].description === 'learn') {
+            helper.pageWebViewIframe(e.selection[0].contextValue);
+          }
+          
+          /** Call the Director to select handler will process the request */
+          (new Director(e.selection[0].contextValue, e.selection[0].description)).run();
+                      
         }
 
     });

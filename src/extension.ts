@@ -6,4 +6,4 @@ export function activate(context: vscode.ExtensionContext) {
 	new TreeViewProvider().register(context);
 }
 
-export function deactivate() {}
+export function deactivate() {}  

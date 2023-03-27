@@ -11,6 +11,7 @@ class SomeChainValidate2 extends HandlerAbstract
          * If you want to break the chain,
          * just do a return
          */
+         echo "Validate 2" . PHP_EOL;
         
         if($this->next)
             return $this->next->handler($request);
