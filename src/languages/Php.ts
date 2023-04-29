@@ -37,14 +37,68 @@ export class Php extends HandlerAbstract {
                     value: "../../vendor/autoload.php"
                   })
                   .then(pathAutoload => {
-
                       
-                        helper.copyPattern(patch, extention, moduleName, pathAutoload);
+                        this.copyPattern(patch, extention, moduleName, pathAutoload);
                         
                   });
             
             
           });
                   
+    }
+
+    /**
+     * Copy all folders and files from pattern
+     * @param patternClicked 
+     * @return void
+     */
+    async copyPattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void> {
+
+        let ext: string = "";
+        let modName: string = "";
+        let pAutoload: string = "";
+
+        if(extention !== undefined) {
+            ext = extention.toString();
+        }        
+
+        if(moduleName !== undefined) {
+            modName = moduleName.toString();
+        }   
+        
+        if(pathAutoload !== undefined) {
+            pAutoload = pathAutoload.toString();
+        }   
+
+        let source = helper.getRootPathStubs() + '/' + patternClicked;
+        let target = helper.getPatch();
+
+        if(target === undefined) {
+            vscode.window.showWarningMessage('Target not defined...');
+            return;
+        }
+        
+        // copy all files and folders
+        helper.copyFolderRecursive(source, target, ext, modName, pAutoload);
+
+        // rename the principal folder to module name
+        this.renamePrincipalFolder(target,source,modName);
+            
+        vscode.window.showInformationMessage('Pattern copy!');    
+    }
+
+    renamePrincipalFolder(target: string, source: string, modName: string) {
+        let fs = helper.getFsInstance();
+        let oldPath = target + source.split("/").pop();
+        let newPath = target + modName.split("\\").pop();
+
+        setTimeout(function(){
+            fs.rename(oldPath,  newPath, function(err: any){
+                if (err){
+                    throw err;
+                } 
+                console.log('Arquivo renomeado!');
+            });
+        },2000);
     }
 }

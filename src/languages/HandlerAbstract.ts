@@ -8,4 +8,6 @@ export abstract class HandlerAbstract implements HandlerInterface {
     }
 
     abstract handler(patch: string, extention: string): void;
+
+    abstract copyPattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void>;
 }

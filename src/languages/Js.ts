@@ -15,7 +15,5 @@ export class Js extends HandlerAbstract {
             return this.next.handler(patch, extention);
         }
             
-    }
-
-   
+    }   
 }

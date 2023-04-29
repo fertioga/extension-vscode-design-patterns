@@ -1,33 +1,19 @@
 import * as vscode from 'vscode';
 import * as webview from "./webviews";
 
-var fs = require('fs');
-var path = require('path');
-var rootPath = __dirname + '/../stubs';
 const panel = vscode.window.createWebviewPanel("Design Pattern Plugin","Design Pattern Plugin",1);
 
-/**
- * Show input box info
- * @param value 
- * @param placeHolder 
- * @returns 
- */
-// export async function showInputBox(value: string, placeHolder: string) {
-// 	const result = await vscode.window.showInputBox({
-// 		value: value,
-// 		placeHolder: placeHolder,
-// 		// validateInput: text => {
-// 		// 	vscode.window.showInformationMessage(`Validating: ${text}`);
-// 		// 	return text === '123' ? 'Not 123!' : null;
-// 		// }
-// 	});
+var path = require('path');
 
-// 	vscode.window.showInformationMessage(`Selected: ${result}`);
+export function getFsInstance() {
+    return require('fs');
+}
 
-// 	return result;
-// }
+export function getRootPathStubs() {
+    return __dirname + '/../stubs';
+}
 
-/** 
+/** TODO: AQUI PRECISA REFATORAR PARA PEGAR O PATH A PARTIR DO DIRETORIO CLICADO E NÂO PELO ARQUIVO CLICADO
  * get path to apply the pattern
  * @return string | undefined
  */
@@ -52,13 +38,14 @@ export function getPatch(): string | undefined {
     return returnPatch;	
 }
 
-/** copy file 
+/** copy file and change extention file
  * @param source string (file source)
  * @param target string (file target)
  * @return void
 */
 export function copyFile( source: string, target: string, newExtention: string): string {
 
+    let fs = getFsInstance();
     let targetFile = target;
 
     if ( fs.existsSync( target ) ) {
@@ -98,7 +85,7 @@ function changeExtentionFile(targerFile: string, newExtention: string): string {
 */
 export function copyFolderRecursive( source: string, target: string | undefined, extention: string, moduleName: string, pathAutoload: string ): void {
     let files = [];
-
+    let fs = getFsInstance();
     let targetFolder = path.join( target, path.basename( source ) );
 
     if ( !fs.existsSync( targetFolder ) ) {
@@ -133,68 +120,15 @@ export function copyFolderRecursive( source: string, target: string | undefined,
 }
 
 /**
- * Copy all folders and files from pattern
- * @param patternClicked 
- * @return void
- */
-export async function copyPattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void> {
-
-    let ext: string = "";
-    let modName: string = "";
-    let pAutoload: string = "";
-
-    if(extention !== undefined) {
-        ext = extention.toString();
-    }        
-
-    if(moduleName !== undefined) {
-        modName = moduleName.toString();
-    }   
-    
-    if(pathAutoload !== undefined) {
-        pAutoload = pathAutoload.toString();
-    }   
-
-    let source = rootPath + '/' + patternClicked;
-        let target = getPatch();
-
-    if(target === undefined) {
-        vscode.window.showWarningMessage('Target not defined...');
-        return;
-    }
-    
-    // copy all files and folders
-    copyFolderRecursive(source, target, ext, modName, pAutoload);
-
-    // rename the principal folder to module name
-    renamePrincipalFolder(target,source,modName);
-           
-    vscode.window.showInformationMessage('Pattern copy!');    
-}
-
-function renamePrincipalFolder(target: string, source: string, modName: string) {
-
-    let oldPath = target + source.split("/").pop();
-    let newPath = target + modName.split("\\").pop();
-
-    setTimeout(function(){
-        fs.rename(oldPath,  newPath, function(err: any){
-            if (err){
-                throw err;
-            } 
-            console.log('Arquivo renomeado!');
-        });
-    },2000);
-}
-
-/**
  * Change Namespace to all files pattern select on param
  * @param pattern 
  * @param namespace 
  */
 export async function writingInFilesToAdjustsInfos(file: string, namespace: string, pathAutoload: string ) {
 
-    let readFile = await fs.readFile(file, 'utf8', function (err: any,data: string) {
+    let fs = getFsInstance();
+    
+    let readFile = await fs.readFile(file, 'utf8', function (err: any,data: string) {        
 
         if (err) {
             console.log("changeNamespaceFile when Read" + err);
