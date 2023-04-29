@@ -66,10 +66,13 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
         // validate if is the last one element
         if(e.selection[0].collapsibleState === 0) {
 
-          if(e.selection[0].contextValue, e.selection[0].description === 'learn') {
-            helper.pageWebViewIframe(e.selection[0].contextValue);
+          /** if the last element == learn, need open the page with we can learn about that pattern */
+          if(e.selection[0].contextValue, e.selection[0].description === 'learn') {            
+            helper.pageWebViewIframe(e.selection[0].contextValue);             
+           // return;
           }
           
+          /** Here is called the director when will validate wich pattern need be implementd */
           /** Call the Director to select handler will process the request */
           (new Director(e.selection[0].contextValue, e.selection[0].description)).run();
                       

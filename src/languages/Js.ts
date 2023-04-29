@@ -16,4 +16,9 @@ export class Js extends HandlerAbstract {
         }
             
     }   
+
+    async copyPattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void> {
+
+
+    }
 }

@@ -25,6 +25,7 @@ export class Director {
          * Obs: The last one need put undefined in constructor
         */
        let getPattern = new Php(new Js(undefined));
+       
        getPattern.handler(this.patch, this.extention);
 
     }

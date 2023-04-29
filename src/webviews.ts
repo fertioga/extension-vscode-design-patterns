@@ -15,7 +15,7 @@ export function page(content: string): string {
                 <div class="row">
                     <div class="col-sm-12">
                         <div class="alert alert-danger" role="alert">
-                            Important: We have no link with the website below. It is just a study indication.
+                            Important: We aren't related with the website below. It is just a study indication.
                         </div>
                     </div>
                 </div>
@@ -35,6 +35,7 @@ export function page(content: string): string {
  * @return string
 */
 export function pageWithIframe(link: string) {
+
     return page(`
     <iframe style='border: none; position: fixed; top: 7%; left: 0; width: 100%; height: 100%;' src='${link}'></iframe>
     `);
