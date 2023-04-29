@@ -19,12 +19,12 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
       new TreeItem(
           'PHP', 'PHP', '',
             [ 
-              new TreeItem('Behavioal','PHP/Behavioal', '', 
+              new TreeItem('Behavioral','PHP/Behavioral', '', 
                           [ 
-                            new TreeItem('ChainOfResponsability','PHP/Behavioal/ChainOfResponsability', '',
+                            new TreeItem('ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
                             [
                               new TreeItem('Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
-                              new TreeItem('Apply','PHP/Behavioal/ChainOfResponsability','php')
+                              new TreeItem('Apply','PHP/Behavioral/ChainOfResponsability','php')
                             ])
                           ]
                     ),
