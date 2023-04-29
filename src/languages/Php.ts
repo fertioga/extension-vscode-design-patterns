@@ -1,20 +1,19 @@
 import * as vscode from 'vscode';
 import * as helper from "../helpers";
 import { HandlerAbstract } from './HandlerAbstract';
-
+var path = require('path');
 export class Php extends HandlerAbstract {
 
     handler(patch: string | undefined, extention: string | boolean | undefined): void {
         
-        /** Verify if is PHP to process */
+        /** Verify if is PHP language */
         if(extention === "php" ) {
-            this.getPattern(patch, extention);
+            this.askMoreInfos(patch, extention);
         }
 
         if(this.next) {
-            return this.next.handler(patch, extention);
-        }
-            
+            return this.next.handler(patch, extention); // call next handler if not PHP language
+        }            
     }
 
     /**
@@ -22,7 +21,7 @@ export class Php extends HandlerAbstract {
      * @param patch 
      * @param extention 
      */
-    async getPattern(patch: string | undefined, extention: string) {
+    async askMoreInfos(patch: string | undefined, extention: string) {
 
         vscode.window.showInputBox({
             placeHolder: "ex: src\\Validate... (PSR4)",
@@ -38,13 +37,10 @@ export class Php extends HandlerAbstract {
                   })
                   .then(pathAutoload => {
                       
-                        this.copyPattern(patch, extention, moduleName, pathAutoload);
+                        this.configurePattern(patch, extention, moduleName, pathAutoload);
                         
                   });
-            
-            
-          });
-                  
+          });     
     }
 
     /**
@@ -52,7 +48,7 @@ export class Php extends HandlerAbstract {
      * @param patternClicked 
      * @return void
      */
-    async copyPattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void> {
+    configurePattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): void {
 
         let ext: string = "";
         let modName: string = "";
@@ -73,18 +69,102 @@ export class Php extends HandlerAbstract {
         let source = helper.getRootPathStubs() + '/' + patternClicked;
         let target = helper.getPatch();
 
+        /** not recognite when need create a pattern (path problem) */
         if(target === undefined) {
             vscode.window.showWarningMessage('Target not defined...');
             return;
         }
         
-        // copy all files and folders
-        helper.copyFolderRecursive(source, target, ext, modName, pAutoload);
+        // copy all files and folders (looping recursive)
+        this.copyFolderRecursive(source, target, ext, modName, pAutoload);
 
-        // rename the principal folder to module name
-        this.renamePrincipalFolder(target,source,modName);
-            
+        // when is over, rename folder (using namespace as a param)
+        this.renamePrincipalFolder(target, source, modName);
+                    
         vscode.window.showInformationMessage('Pattern copy!');    
+    }
+
+    /** Copy Folders Recursively with FIles and change namespace
+     * @param source string (path origin)
+     * @param target string (path target)
+     * @param extention string (extension files)
+     * @param namespace string 
+     * @param autoloadPath string 
+     * @return void
+    */
+    copyFolderRecursive( source: string, target: string | undefined, extention: string, namespace: string, autoloadPath: string ): void {
+        let files = [];
+        let fs = helper.getFsInstance();
+        let targetFolder = path.join( target, path.basename( source ) );
+
+        if ( !fs.existsSync( targetFolder ) ) {
+            fs.mkdirSync( targetFolder );
+        }
+
+        if ( fs.lstatSync( source ).isDirectory() ) {
+
+            files = fs.readdirSync( source );
+
+            files.forEach(  ( file: string, index: any, arr: any ) => {
+
+                vscode.window.showInformationMessage(index);
+
+                var curSource = path.join( source, file );
+
+                /** if is directory, open the directory*/
+                if ( fs.lstatSync( curSource ).isDirectory() ) {
+                
+                    this.copyFolderRecursive( curSource, targetFolder, extention, namespace, autoloadPath ); // call recursive
+                
+                } else {
+                
+                    // copy file to destination 
+                    let targetPathFile =  helper.copyFile( curSource, targetFolder, extention);         
+                    
+                    // if is a file
+                    if(! this.writingInFilesToAdjustsInfos(targetPathFile, namespace, autoloadPath)){
+                        console.log("Error on change namespace");
+                    }                    
+                }
+
+            } );
+        }    
+    }
+
+    /**
+     * Change Namespace to all files pattern select on param
+     * @param pattern 
+     * @param namespace 
+     */
+    async writingInFilesToAdjustsInfos(file: string, namespace: string, pathAutoload: string ) {
+
+        let fs = helper.getFsInstance();
+        
+        let readFile = await fs.readFile(file, 'utf8', function (err: any,data: string) {        
+
+            if (err) {
+                console.log("changeNamespaceFile when Read" + err);
+                return false;
+            }
+
+            // Replace string occurrences
+            let updated =  data.replace(/YOUR_NAMESPACE/gi, namespace); // replace namespace
+                updated = updated.replace(/AUTOLOAD_PATH/gi, pathAutoload); // replace path autoload.php
+
+            let writeReplace = fs.writeFile(file, updated, 'utf-8', function (err: any) {
+                if (err) {
+                    console.log("changeNamespaceFile when Write" + err);
+                    return false;
+                }
+            });
+
+            fs.close(writeReplace);
+            
+        })(namespace);
+
+        fs.close(readFile);
+
+        return true;
     }
 
     renamePrincipalFolder(target: string, source: string, modName: string) {

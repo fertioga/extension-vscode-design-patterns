@@ -6,7 +6,7 @@ export class Js extends HandlerAbstract {
 
     handler(patch: string, extention: string): void {
         
-        /** Verify if is TS to process */
+        /** Verify if is TS language */
         if(extention === "ts" ) {
             vscode.window.showInformationMessage("JAVASCRIPT");
         }
@@ -17,7 +17,7 @@ export class Js extends HandlerAbstract {
             
     }   
 
-    async copyPattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void> {
+    async configurePattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): Promise<void> {
 
 
     }
