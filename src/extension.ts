@@ -1,12 +1,12 @@
 import * as vscode from 'vscode';
 import { TreeViewProvider } from "./treeViewProvider";
-import * as helper from './helpers';
+import * as webview from './webviews/webviews';
 
 export function activate(context: vscode.ExtensionContext) {
 	
-	/** open this page when open the plugin */
-	helper.pageWebViewIframe("https://refactoring.guru/design-patterns");
+	webview.pageWelcome();
 	new TreeViewProvider().register(context);
+
 }
 
 export function deactivate() {}  

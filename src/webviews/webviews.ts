@@ -1,9 +1,17 @@
+import * as welcome from './welcome';
+import * as vscode from 'vscode';
+
+const TITLE = "Design Pattern Plugin";
+
 /** Template for all pages 
  * @param content string - Content of page
  * @return string
 */
-export function page(content: string): string {
-    return `
+export function page(content: string): void {
+
+    const panel = vscode.window.createWebviewPanel(TITLE,TITLE,1);
+	panel.webview.html = 
+ `
 	<!DOCTYPE html>
         <html lang="en">
             <head>
@@ -30,13 +38,9 @@ export function page(content: string): string {
 	</html>`;
 }
 
-/** Page expecific to load some external link into iframe 
- * @param link string - link of webpage
- * @return string
-*/
-export function pageWithIframe(link: string) {
 
-    return page(`
-    <iframe style='border: none; position: fixed; top: 7%; left: 0; width: 100%; height: 100%;' src='${link}'></iframe>
-    `);
+export function pageWelcome() {
+
+    return page(welcome.default);
+
 }

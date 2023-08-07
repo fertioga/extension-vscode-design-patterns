@@ -26,7 +26,7 @@ export class Php extends HandlerAbstract {
         vscode.window.showInputBox({
             placeHolder: "ex: src\\Validate... (PSR4)",
             prompt: "Type your namespace here.",
-            value: ""
+            value: "scr\\YOUR_NAMESPACE"
           })
           .then(moduleName => {
                
@@ -71,7 +71,18 @@ export class Php extends HandlerAbstract {
 
         /** not recognite when need create a pattern (path problem) */
         if(target === undefined) {
-            vscode.window.showWarningMessage('Target not defined...');
+
+            const header = "Don\'t found your project folder.";
+            const options: vscode.MessageOptions = { detail: 'Select your project folder before apply the pattern.', modal: true };
+            vscode.window.showWarningMessage(header, options, ...["Ok"]).then((item)=>{
+
+                if(item !== undefined) {
+                    // redirect to explorator crt + shift + e
+                    vscode.commands.executeCommand('workbench.files.action.showActiveFileInExplorer');
+                } 
+                
+            });
+
             return;
         }
         
@@ -80,8 +91,18 @@ export class Php extends HandlerAbstract {
 
         // when is over, rename folder (using namespace as a param)
         this.renamePrincipalFolder(target, source, modName);
-                    
-        vscode.window.showInformationMessage('Pattern copy!');    
+
+        const header = "Worked like a charm!";
+        const options: vscode.MessageOptions = { detail: 'Run composer dump-autoload to recognize the new classes. \n\n And then, execute ExampleUse file.', modal: true };
+        vscode.window.showInformationMessage(header, options, ...["Ok"]).then((item)=>{
+
+            if(item !== undefined) {
+                // redirect to explorator crt + shift + e
+                vscode.commands.executeCommand('workbench.files.action.showActiveFileInExplorer');
+            } 
+            
+        });
+        
     }
 
     /** Copy Folders Recursively with FIles and change namespace

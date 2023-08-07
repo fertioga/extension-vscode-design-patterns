@@ -1,5 +1,5 @@
 import * as vscode from 'vscode';
-import * as webview from "./webviews";
+import * as webview from './webviews/webviews';
 
 const panel = vscode.window.createWebviewPanel("Design Pattern Plugin","Design Pattern Plugin",1);
 
@@ -76,25 +76,5 @@ export function copyFile( source: string, target: string, newExtention: string):
 function changeExtentionFile(targerFile: string, newExtention: string): string {
     
     return targerFile.replace('stub', newExtention);
-}
-
-/**
- * Create page view
- * @param content 
- */
-export function pageWebView(content: any) {
-
-    panel.webview.html = webview.page(content);
-
-}
-
-/**
- * Create a page view with a Iframe
- * @param link 
- */
-export function pageWebViewIframe(link: any) {
-
-    panel.webview.html = webview.pageWithIframe(link);
-
 }
 

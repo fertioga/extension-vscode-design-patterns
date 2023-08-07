@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as helper from './helpers';
 import { Director } from './languages/Director';
 
+
 export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
   
   private _onDidChangeTreeData: vscode.EventEmitter<undefined | void> = new vscode.EventEmitter<undefined | void>();
@@ -67,15 +68,20 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
         if(e.selection[0].collapsibleState === 0) {
 
           /** if the last element == learn, need open the page with we can learn about that pattern */
-          if(e.selection[0].contextValue, e.selection[0].description === 'learn') {            
-            helper.pageWebViewIframe(e.selection[0].contextValue);             
-           // return;
+          if(e.selection[0].contextValue, e.selection[0].description === 'learn') {  
+
+             
+              vscode.env.openExternal(vscode.Uri.parse(e.selection[0].contextValue || ""));
+
+                   
           }
           
           /** Here is called the director when will validate wich pattern need be implementd */
           /** Call the Director to select handler will process the request */
           (new Director(e.selection[0].contextValue, e.selection[0].description)).run();
-                      
+          
+          // reset event to refresh the tree
+
         }
 
     });
