@@ -26,7 +26,7 @@ export class Php extends HandlerAbstract {
         vscode.window.showInputBox({
             placeHolder: "ex: src\\Validate... (PSR4)",
             prompt: "Type your namespace here.",
-            value: "scr\\YOUR_NAMESPACE"
+            value: "src\\YOUR_NAMESPACE"
           })
           .then(moduleName => {
                
@@ -93,7 +93,7 @@ export class Php extends HandlerAbstract {
         this.renamePrincipalFolder(target, source, modName);
 
         const header = "Worked like a charm!";
-        const options: vscode.MessageOptions = { detail: 'Run composer dump-autoload to recognize the new classes. \n\n And then, execute ExampleUse file.', modal: true };
+        const options: vscode.MessageOptions = { detail: 'Run composer dump-autoload to recognize the new classes. \n\n And then, execute php UseCase.php file.', modal: true };
         vscode.window.showInformationMessage(header, options, ...["Ok"]).then((item)=>{
 
             if(item !== undefined) {
