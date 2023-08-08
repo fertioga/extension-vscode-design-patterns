@@ -1,0 +1,20 @@
+<?php 
+
+require 'AUTOLOAD_PATH'; // <-- verify autoload path
+
+use YOUR_NAMESPACE\PaymentProxy;
+
+// $payment = new Payment(); <- not work because Payment is abstract class
+
+$payment = new PaymentProxy(); // <- work because PaymentProxy is not abstract class
+
+$payment->doPayment();
+
+echo "##################################################################################" . PHP_EOL;
+echo "It is impossible to access the Payment class without going through the Proxy!!!! "  . PHP_EOL;
+echo "##################################################################################" . PHP_EOL . PHP_EOL;
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//

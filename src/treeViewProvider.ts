@@ -63,13 +63,19 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                           [
                             new TreeItem("", 'Singleton','PHP/Creational/Singleton', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/pt-br/design-patterns/singleton','learn'),
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/singleton','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Singleton','php')
                             ])
                           ]
                     ),
               new TreeItem(this.iconStructural, 'Structural','PHP/Structural', '',
-                          []
+                          [
+                            new TreeItem("", 'Proxy','PHP/Structural/Proxy', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/proxy','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Structural/Proxy','php')
+                            ])
+                          ]
                     ),
             ]
       )

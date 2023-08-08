@@ -1,0 +1,11 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+abstract class Payment implements PaymentInterface
+{
+    public function doPayment(): void
+    {
+        echo "Class Payment: Make payment to someone.\n";
+    }
+}

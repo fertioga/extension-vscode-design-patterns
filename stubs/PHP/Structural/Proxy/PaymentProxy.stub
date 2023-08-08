@@ -1,0 +1,29 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+class PaymentProxy extends Payment implements PaymentInterface
+{
+    public function doPayment(): void
+    {
+        if ($this->checkAccess()) { //<-- check access
+
+            parent::doPayment(); //<-- call parent method
+
+            $this->logAccess(); //<-- log access
+        }
+    }
+
+    private function checkAccess(): bool
+    {
+        // Some real checks should go here.
+        echo "Proxy: Checking access prior to firing a real request.\n";
+
+        return true;
+    }
+
+    private function logAccess(): void
+    {
+        echo "Proxy: Logging the time of request.\n";
+    }
+}
