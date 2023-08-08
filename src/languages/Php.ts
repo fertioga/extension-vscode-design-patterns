@@ -4,24 +4,24 @@ import { HandlerAbstract } from './HandlerAbstract';
 var path = require('path');
 export class Php extends HandlerAbstract {
 
-    handler(patch: string | undefined, extention: string | boolean | undefined): void {
+    handler(path: string | undefined, extention: string | boolean | undefined): void {
         
         /** Verify if is PHP language */
         if(extention === "php" ) {
-            this.askMoreInfos(patch, extention);
+            this.askMoreInfos(path, extention);
         }
 
         if(this.next) {
-            return this.next.handler(patch, extention); // call next handler if not PHP language
+            return this.next.handler(path, extention); // call next handler if not PHP language
         }            
     }
 
     /**
      * Get patterns PHP
-     * @param patch 
+     * @param path 
      * @param extention 
      */
-    async askMoreInfos(patch: string | undefined, extention: string) {
+    async askMoreInfos(path: string | undefined, extention: string) {
 
         vscode.window.showInputBox({
             placeHolder: "ex: src\\Validate... (PSR4)",
@@ -37,7 +37,7 @@ export class Php extends HandlerAbstract {
                   })
                   .then(pathAutoload => {
                       
-                        this.configurePattern(patch, extention, moduleName, pathAutoload);
+                        this.configurePattern(path, extention, moduleName, pathAutoload);
                         
                   });
           });     
@@ -53,6 +53,7 @@ export class Php extends HandlerAbstract {
         let ext: string = "";
         let modName: string = "";
         let pAutoload: string = "";
+        let target = undefined;
 
         if(extention !== undefined) {
             ext = extention.toString();
@@ -67,42 +68,38 @@ export class Php extends HandlerAbstract {
         }   
 
         let source = helper.getRootPathStubs() + '/' + patternClicked;
-        let target = helper.getPatch();
 
-        /** not recognite when need create a pattern (path problem) */
-        if(target === undefined) {
-
-            const header = "Don\'t found your project folder.";
-            const options: vscode.MessageOptions = { detail: 'Select your project folder before apply the pattern.', modal: true };
-            vscode.window.showWarningMessage(header, options, ...["Ok"]).then((item)=>{
-
-                if(item !== undefined) {
-                    // redirect to explorator crt + shift + e
-                    vscode.commands.executeCommand('workbench.files.action.showActiveFileInExplorer');
-                } 
-                
-            });
-
-            return;
-        }
-        
-        // copy all files and folders (looping recursive)
-        this.copyFolderRecursive(source, target, ext, modName, pAutoload);
-
-        // when is over, rename folder (using namespace as a param)
-        this.renamePrincipalFolder(target, source, modName);
-
-        const header = "Worked like a charm!";
-        const options: vscode.MessageOptions = { detail: 'Run composer dump-autoload to recognize the new classes. \n\n And then, execute php UseCase.php file.', modal: true };
-        vscode.window.showInformationMessage(header, options, ...["Ok"]).then((item)=>{
-
-            if(item !== undefined) {
-                // redirect to explorator crt + shift + e
-                vscode.commands.executeCommand('workbench.files.action.showActiveFileInExplorer');
-            } 
+        // Open dialog to select folder to apply the pattern 
+        vscode.window.showOpenDialog({
+            canSelectFiles: false,
+            canSelectFolders: true,
+            canSelectMany: false,
+            openLabel: 'Select folder when you want apply the pattern'
+        }).then(fileUri => {
             
+            if (fileUri && fileUri[0]) {
+    
+                target = fileUri[0].fsPath;
+
+                // copy all files and folders (looping recursive)
+                this.copyFolderRecursive(source, target, ext, modName, pAutoload);
+
+                // when is over, rename folder (using namespace as a param)
+                this.renamePrincipalFolder(target, source, modName);
+
+                const header = "Worked like a charm!";
+                const options: vscode.MessageOptions = { detail: 'Run composer dump-autoload to recognize the new classes. \n\n And then, execute php UseCase.php file.', modal: true };
+                vscode.window.showInformationMessage(header, options, ...["Ok"]).then((item)=>{
+
+                    if(item !== undefined) {
+                        // redirect to explorator crt + shift + e
+                        vscode.commands.executeCommand('workbench.files.action.showActiveFileInExplorer');
+                    } 
+                    
+                });
+    
+            }
         });
-        
     }
 
     /** Copy Folders Recursively with FIles and change namespace
@@ -164,7 +161,7 @@ export class Php extends HandlerAbstract {
         let readFile = await fs.readFile(file, 'utf8', function (err: any,data: string) {        
 
             if (err) {
-                console.log("changeNamespaceFile when Read" + err);
+                console.log("writingInFilesToAdjustsInfos when Read" + err);
                 return false;
             }
 
@@ -174,7 +171,7 @@ export class Php extends HandlerAbstract {
 
             let writeReplace = fs.writeFile(file, updated, 'utf-8', function (err: any) {
                 if (err) {
-                    console.log("changeNamespaceFile when Write" + err);
+                    console.log("writingInFilesToAdjustsInfos when Write" + err);
                     return false;
                 }
             });
@@ -189,16 +186,16 @@ export class Php extends HandlerAbstract {
     }
 
     renamePrincipalFolder(target: string, source: string, modName: string) {
+
         let fs = helper.getFsInstance();
-        let oldPath = target + source.split("/").pop();
-        let newPath = target + modName.split("\\").pop();
+        let oldPath = target + "/" + source.split("/").pop();
+        let newPath = target + "/" + modName.split("\\").pop();
 
         setTimeout(function(){
             fs.rename(oldPath,  newPath, function(err: any){
                 if (err){
                     throw err;
                 } 
-                console.log('Arquivo renomeado!');
             });
         },2000);
     }

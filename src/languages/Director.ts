@@ -5,11 +5,11 @@ import { Js } from './Js';
 
 export class Director {
 
-    patch: string | undefined;
+    path: string | undefined;
     extention: string | boolean | undefined;
 
     constructor(path: string | undefined, extention: string | boolean | undefined) {
-        this.patch = path;
+        this.path = path;
         this.extention = extention;        
     }
     /** Implement Chain of Responsability to choice which is the corret class to implement */
@@ -20,13 +20,13 @@ export class Director {
          *                                  new Python(undefined)
          *                              )
          *                          );
-         * getPattern.handler(this.patch, this.extention);
+         * getPattern.handler(this.path, this.extention);
          * 
          * Obs: The last one need put undefined in constructor
         */
        let getPattern = new Php(new Js(undefined));
        
-       getPattern.handler(this.patch, this.extention);
+       getPattern.handler(this.path, this.extention);
 
     }
 

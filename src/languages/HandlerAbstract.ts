@@ -7,7 +7,7 @@ export abstract class HandlerAbstract implements HandlerInterface {
         this.next = next;
     }
 
-    abstract handler(patch: string, extention: string): void;
+    abstract handler(path: string, extention: string): void;
 
     abstract configurePattern(patternClicked?: any, extention?: string|boolean, moduleName?: string, pathAutoload?: string): void;
 }

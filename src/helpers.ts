@@ -1,5 +1,4 @@
 import * as vscode from 'vscode';
-import * as webview from './webviews/webviews';
 
 const panel = vscode.window.createWebviewPanel("Design Pattern Plugin","Design Pattern Plugin",1);
 
@@ -11,31 +10,6 @@ export function getFsInstance() {
 
 export function getRootPathStubs() {
     return __dirname + '/../stubs';
-}
-
-/** TODO: AQUI PRECISA REFATORAR PARA PEGAR O PATH A PARTIR DO DIRETORIO CLICADO E NÂO PELO ARQUIVO CLICADO
- * get path to apply the pattern
- * @return string | undefined
- */
-export function getPatch(): string | undefined {
-    
-    let pathStringWithFile = vscode.window.activeTextEditor?.document.uri.toString();
-
-    let pathArrayWithFile = pathStringWithFile?.split("/");
-
-    let file = pathArrayWithFile?.[pathArrayWithFile.length - 1];
-
-    let returnPatch = undefined;
-
-    if (file !== undefined) {
-
-        let pathWithoutFile =  pathStringWithFile?.replace(file.toString(), '');
-        pathWithoutFile =  pathWithoutFile?.replace('file://'.toString(), '');
-
-        returnPatch = pathWithoutFile;
-    }
-
-    return returnPatch;	
 }
 
 /** copy file and change extention file
