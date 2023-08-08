@@ -49,8 +49,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
     [
       new TreeItem(
           this.iconLanguage, 'PHP', 'PHP', '',
-            [ 
-              
+            [               
               new TreeItem(this.iconBehavioral, 'Behavioral','PHP/Behavioral', '', 
                           [ 
                             new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
@@ -61,7 +60,13 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                           ]
                     ),
               new TreeItem(this.iconCreational, 'Creational','PHP/Creational', '',
-                          []
+                          [
+                            new TreeItem("", 'Singleton','PHP/Creational/Singleton', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/pt-br/design-patterns/singleton','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/Singleton','php')
+                            ])
+                          ]
                     ),
               new TreeItem(this.iconStructural, 'Structural','PHP/Structural', '',
                           []

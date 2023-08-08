@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../teste_plugin_vscode"
 		}
 	],
 	"settings": {

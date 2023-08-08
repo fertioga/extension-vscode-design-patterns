@@ -1,0 +1,18 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+class DatabaseConnection extends Singleton
+{
+    private $fields = [];
+
+    public function getValue(string $key): string
+    {
+        return $this->fields[$key];
+    }
+
+    public function setValue(string $key, string $value): void
+    {
+        $this->fields[$key] = $value;
+    }
+}

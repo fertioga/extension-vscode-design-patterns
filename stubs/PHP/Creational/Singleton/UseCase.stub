@@ -1,0 +1,74 @@
+<?php 
+
+require 'AUTOLOAD_PATH'; // <-- verify autoload path
+
+use YOUR_NAMESPACE\DatabaseConnection;
+
+
+# new DatabaseConnection(); <-- dont' work
+# DatabaseConnection::getInstance(); <- it's work!
+
+# More exemples:
+############################## FIRST INSTANCE #################################
+
+$database1 = DatabaseConnection::getInstance();
+
+// id instance class Databaseconnection
+$database1_inscance1 = spl_object_id($database1);
+
+$username = "test_username";
+$password = "test_password";
+
+$database1->setValue("username", $username);
+$database1->setValue("password", $password);
+
+
+echo "ID First Instance in memory: "  . $database1_inscance1 . PHP_EOL;
+echo $database1->getValue("username") . PHP_EOL;
+echo $database1->getValue("password") . PHP_EOL;
+
+echo "--------------------------------" . PHP_EOL;
+
+######################### "SECOND" INSTANCE ##################################
+
+$database2 = DatabaseConnection::getInstance();
+
+// id instance class Databaseconnection
+$database2_inscance2 = spl_object_id($database2);
+
+$username = "test_username_2";
+$password = "test_password_2";
+
+$database2->setValue("username", $username);
+$database2->setValue("password", $password);
+
+
+echo "ID Second Instance in memory: " . $database2_inscance2 . PHP_EOL;
+echo $database2->getValue("username") . PHP_EOL;
+echo $database2->getValue("password") . PHP_EOL;
+
+echo "--------------------------------" . PHP_EOL;
+
+####################### "THIRD" INSTANCE #####################################
+
+$database3 = DatabaseConnection::getInstance();
+
+// id instance class Databaseconnection
+$database_inscance3 = spl_object_id($database3);
+
+echo "ID Third Instance in memory: "  . $database_inscance3 . PHP_EOL;
+echo $database3->getValue("username") . PHP_EOL;
+echo $database3->getValue("password") . PHP_EOL;
+
+echo "--------------------------------" . PHP_EOL;
+
+echo "First instance: "  . $database1_inscance1 . PHP_EOL;
+echo "Second instance: " . $database2_inscance2 . PHP_EOL;
+echo "Third instance: "  . $database_inscance3  . PHP_EOL;
+
+echo "Is the Same Instance!" . PHP_EOL;
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//
