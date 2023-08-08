@@ -49,7 +49,7 @@
             "name": "List",
             "icon": "media/dep.svg",
             "contextualTitle": "DesignPatterns"
-          }
+          }                
         ]
       },
       "viewsContainers": {

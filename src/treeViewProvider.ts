@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as helper from './helpers';
 import { Director } from './languages/Director';
-
+import * as path from 'path';
 
 export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
   
@@ -13,31 +13,103 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
   data: TreeItem[] = [];
   pathClicked: string[] = [];
 
+  iconLanguage = {
+    light: path.join(__filename, '..', '..', 'resources', 'light', 'code.svg'),
+    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'code.svg')
+  };
+
+  iconLearn = {
+    light: path.join(__filename, '..', '..', 'resources', 'light', 'book.svg'),
+    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'book.svg')
+  };
+
+  iconApply = {
+    light: path.join(__filename, '..', '..', 'resources', 'light', 'fire.svg'),
+    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'fire.svg')
+  };
+
+  iconBehavioral = {
+    light: path.join(__filename, '..', '..', 'resources', 'light', 'person.svg'),
+    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'person.svg')
+  };
+
+  iconCreational = {
+    light: path.join(__filename, '..', '..', 'resources', 'light', 'pen.svg'),
+    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'pen.svg')
+  };
+
+  iconStructural = {
+    light: path.join(__filename, '..', '..', 'resources', 'light', 'wall.svg'),
+    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'wall.svg')
+  };
+
   constructor() {
 
     this.data =     
     [
       new TreeItem(
-          'PHP', 'PHP', '',
+          this.iconLanguage, 'PHP', 'PHP', '',
             [ 
-              new TreeItem('Behavioral','PHP/Behavioral', '', 
+              
+              new TreeItem(this.iconBehavioral, 'Behavioral','PHP/Behavioral', '', 
                           [ 
-                            new TreeItem('ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
                             [
-                              new TreeItem('Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
-                              new TreeItem('Apply','PHP/Behavioral/ChainOfResponsability','php')
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
                             ])
                           ]
                     ),
-              new TreeItem('Creational','PHP/Creational', '',
+              new TreeItem(this.iconCreational, 'Creational','PHP/Creational', '',
                           []
                     ),
-              new TreeItem('Structural','PHP/Structural', '',
+              new TreeItem(this.iconStructural, 'Structural','PHP/Structural', '',
                           []
                     ),
             ]
       )
     ];
+    
   }
 
   refresh(): void {
@@ -79,8 +151,6 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
           /** Here is called the director when will validate wich pattern need be implementd */
           /** Call the Director to select handler will process the request */
           (new Director(e.selection[0].contextValue, e.selection[0].description)).run();
-          
-          // reset event to refresh the tree
 
         }
 
@@ -119,13 +189,23 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 class TreeItem extends vscode.TreeItem {
   children: TreeItem[]|undefined;
 
-  constructor(label: string, contextValue: string, description: string, children?: TreeItem[]) {
+  constructor(
+              icon: {
+                light: string | vscode.Uri;
+                dark: string | vscode.Uri;
+              } | "", 
+              label: string, 
+              contextValue: string, 
+              description: string, 
+              children?: TreeItem[]) 
+      {
     super(
         label,       
         children === undefined ? vscode.TreeItemCollapsibleState.None :
                                  vscode.TreeItemCollapsibleState.Collapsed),
         this.description = description,
         this.contextValue = contextValue,
+        this.iconPath = icon,
     this.children = children;
   }
 }
