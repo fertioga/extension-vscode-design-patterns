@@ -1,0 +1,39 @@
+<?php 
+
+namespace src\Facade;
+
+/**
+ * Facade pattern is used to provide a simplified interface to a complicated system.
+ * hide complexity of the system and provide an simple interface to the client
+ */
+class BuyProductFacade
+{
+    public function addShoppingCart(Product $product, int $qtOrder): bool
+    {
+        
+        $stock = new Stock($product); // <-- sub-system
+        $order = new Order($product); // <-- sub-system
+
+        if($stock->validateStock($qtOrder) && $order->addProduct($qtOrder)) {
+
+            echo "Product added in shopping cart" . PHP_EOL;
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public function payment(): bool
+    {
+
+        $financial = new Financal(); // <-- sub-system
+
+        if($financial->paymentOk()) {
+            return true;
+        }
+
+        return false;
+    }
+    //...
+}

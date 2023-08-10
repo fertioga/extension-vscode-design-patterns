@@ -1,0 +1,29 @@
+<?php 
+
+namespace src\Facade;
+
+/**
+ * Sub-system of the facade
+ * responsible for add product in order
+ */
+class Order 
+{    
+    protected $product = [];
+
+    public function __construct(Product $product)
+    {
+        $this->product = $product;
+    }
+
+    public function addProduct($qtOrder): bool
+    {
+        $this->product = [
+            'qtOrder' => $qtOrder,
+            'product' => $this->product
+        ];
+
+        echo "Product added in order" . PHP_EOL;
+
+        return true;
+    }
+}

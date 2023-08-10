@@ -1,0 +1,27 @@
+<?php 
+
+namespace src\Facade;
+
+/**
+ * Sub-system of the facade
+ * responsible for product
+ */
+class Product
+{
+    public $id;
+    public $name;
+    public $price;
+
+    public function __construct(string $name, float $price)
+    {
+        $this->name = $name;
+        $this->price = $price;
+        // ...
+    }
+
+    function isActive(): bool
+    {
+        echo "Product is active" . PHP_EOL;
+        return true;
+    }
+}

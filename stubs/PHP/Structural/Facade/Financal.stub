@@ -1,0 +1,16 @@
+<?php 
+
+namespace src\Facade;
+
+/**
+ * Sub-system of the facade
+ * responsible for payment
+ */
+class Financal
+{
+    function paymentOk(): bool
+    {
+        echo "Payment is ok" . PHP_EOL;
+        return true;
+    }
+}
