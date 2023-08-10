@@ -1,0 +1,32 @@
+<?php 
+
+require '../../vendor/autoload.php'; // <-- verify autoload path
+
+use src\Adapter\Restaurant;
+use src\Adapter\OnlineRequests;
+use src\Adapter\OnlineToRestaurantAdapter;
+
+echo "--------------------------" . PHP_EOL;
+
+// Client call the Restaurant
+$restaurant = new Restaurant();
+echo $restaurant->seatInthetable();
+echo $restaurant->requestMeal("Meal 1");
+echo $restaurant->requestPayment();
+
+echo "--------------------------" . PHP_EOL;
+
+// Client call the OnlineRequests using the adapter
+// The adapter make the OnlineRequests compatible with the Restaurant.
+// Both implements the same interface
+$onlineRequest = new OnlineToRestaurantAdapter(new OnlineRequests());
+echo $onlineRequest->seatInthetable();
+echo $onlineRequest->requestMeal("Meal 1");
+echo $onlineRequest->requestPayment();
+
+echo "--------------------------" . PHP_EOL;
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//

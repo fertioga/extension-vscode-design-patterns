@@ -1,0 +1,24 @@
+<?php 
+
+namespace src\Adapter;
+
+/**
+ * Restaurant class (maybe old code)
+ */
+class Restaurant implements InterfaceRestaurant
+{
+    public function seatInthetable(): string
+    {
+        return "Seating in the table" . PHP_EOL;
+    }
+
+    public function requestMeal(string $meal): string
+    {
+        return "Requesting meal: $meal" . PHP_EOL;
+    }
+
+    public function requestPayment(): string
+    {
+        return "Requesting payment" . PHP_EOL;
+    }
+}

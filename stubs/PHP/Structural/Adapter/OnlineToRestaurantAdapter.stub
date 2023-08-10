@@ -1,0 +1,32 @@
+<?php
+
+namespace src\Adapter;
+
+/**
+ * Adapter class
+ * Make the OnlineRequests compatible with the Restaurant
+ */
+class OnlineToRestaurantAdapter implements InterfaceRestaurant
+{
+    private $onlineRequest;
+
+    public function __construct(OnlineRequests $onlineRequest)
+    {
+        $this->onlineRequest = $onlineRequest;
+    }
+
+    public function seatInthetable(): string
+    {
+        return $this->onlineRequest->login();
+    }
+
+    public function requestMeal(string $meal): string
+    {
+        return $this->onlineRequest->addFoodInCart($meal);
+    }
+
+    public function requestPayment(): string
+    {
+        return $this->onlineRequest->makePayment();
+    }
+}

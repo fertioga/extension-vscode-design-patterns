@@ -79,6 +79,11 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/facade','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Structural/Facade','php')
+                            ]),
+                            new TreeItem("", 'Adapter','PHP/Structural/Adapter', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/adapter','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Structural/Adapter','php')
                             ])
                           ]
                     ),

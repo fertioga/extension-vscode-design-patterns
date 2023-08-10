@@ -1,0 +1,24 @@
+<?php 
+
+namespace src\Adapter;
+
+/**
+ * New Class for online requests (need be adapted)
+ */
+class OnlineRequests 
+{
+    public function login(): string
+    {
+        return "Login" . PHP_EOL;
+    }
+    
+    public function addFoodInCart(string $food): string
+    {
+        return "Requesting food: $food" . PHP_EOL;
+    }
+
+    public function makePayment(): string
+    {
+        return "Make online payment" . PHP_EOL;
+    }
+}
