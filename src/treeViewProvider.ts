@@ -65,6 +65,11 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/singleton','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Singleton','php')
+                            ]),
+                            new TreeItem("", 'Factory','PHP/Creational/Factory', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/factory-method','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/Factory','php')
                             ])
                           ]
                     ),
@@ -129,7 +134,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                    
           }
           
-          /** Here is called the director when will validate wich pattern need be implementd */
+          /** Here is calling the director when will validate wich pattern need be implementd */
           /** Call the Director to select handler will process the request */
           (new Director(e.selection[0].contextValue, e.selection[0].description)).run();
 

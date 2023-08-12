@@ -1,0 +1,12 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Interface that all products must implement
+ */
+interface ProductInterface
+{
+    public function getProduct();
+    //..
+}

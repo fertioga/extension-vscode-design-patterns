@@ -1,0 +1,37 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * This class is a concrete factory
+ * It extends the FactoryAbstractProduct
+ * It creates a concrete product
+ */
+class Product1Factory extends ProductAbstractFactory
+{   
+    /** 
+     * One possible logic is to create a product based on a parameter
+     * but it will agaist the Open-Closed Principle (SOLID)
+     * 
+     * Mabe you can use __construct() to inject some dependencies, 
+     * epecific logic or inversion of control (IoC) container
+     */
+
+    public function __construct()
+    {
+        parent::__construct(); // (call the parent constructor if necessary or subescribe him)
+    }
+    
+    /**
+     * Static method to create a product
+     * 
+     * @param string $name
+     * @param string $description
+     * 
+     * @return ProductInterface
+     */
+    public static function make(string $name, string $description): ProductInterface
+    {
+        return new Product1($name, $description); // return concrate class of Product1
+    }
+}

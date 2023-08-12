@@ -1,0 +1,35 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Contrcrete Product
+ * This class implements the ProductInterface
+ */
+class Product2 implements ProductInterface
+{
+    protected string $name;
+    protected string $description;
+
+     /**
+     * @param string $name
+     * @param string $description
+     * 
+     * @return void
+     */
+    public function __construct(string $name, string $description)
+    {
+        $this->name = $name;
+        $this->description = $description;
+    }
+
+     /**
+     * Method to get product
+     * 
+     * @return string
+     */
+    public function getProduct()
+    {
+        return 'Name: ' . $this->name . ' | Description: ' . $this->description;
+    }
+}

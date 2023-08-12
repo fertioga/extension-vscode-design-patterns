@@ -1,0 +1,28 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Abstract Factory Interface
+ */
+abstract class ProductAbstractFactory
+{
+    /**
+     * maybe you can use __construct() to inject some dependencies,
+     * IoC container or specific logic
+     */
+    public function __construct()
+    {   
+        // ..
+    }
+
+    /**
+     * This method must be implemented by the concrete factory
+     * 
+     * @param string $name
+     * @param string $description
+     * 
+     * @return ProductInterface
+     */
+    abstract public static function make(string $name, string $description): ProductInterface;
+}
