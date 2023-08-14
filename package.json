@@ -64,7 +64,7 @@
     "commands": [
       {
         "command": "designpatterns.refreshEntry",
-        "title": "Refresh",
+        "title": "Refresh",        
         "icon": {
             "light": "resources/light/refresh.svg",
             "dark": "resources/dark/refresh.svg"

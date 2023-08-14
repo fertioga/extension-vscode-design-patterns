@@ -2,6 +2,7 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as helper from './helpers';
+import * as webview from './webviews/webviews';
 import { Director } from './languages/Director';
 import * as path from 'path';
 
@@ -12,35 +13,36 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 
   data: TreeItem[] = [];
   pathClicked: string[] = [];
+  
 
   iconLanguage = {
-    light: path.join(__filename, '..', '..', 'resources', 'light', 'code.svg'),
-    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'code.svg')
+    light: this.getPathReources('code.svg','light'),
+    dark:  this.getPathReources('code.svg','dark')
   };
 
   iconLearn = {
-    light: path.join(__filename, '..', '..', 'resources', 'light', 'book.svg'),
-    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'book.svg')
+    light: this.getPathReources('book.svg','light'),
+    dark:  this.getPathReources('book.svg','dark')
   };
 
   iconApply = {
-    light: path.join(__filename, '..', '..', 'resources', 'light', 'fire.svg'),
-    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'fire.svg')
+    light: this.getPathReources('fire.svg','light'),
+    dark:  this.getPathReources('fire.svg','dark')
   };
 
   iconBehavioral = {
-    light: path.join(__filename, '..', '..', 'resources', 'light', 'person.svg'),
-    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'person.svg')
+    light: this.getPathReources('person.svg','light'),
+    dark:  this.getPathReources('person.svg','dark')
   };
 
   iconCreational = {
-    light: path.join(__filename, '..', '..', 'resources', 'light', 'pen.svg'),
-    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'pen.svg')
+    light: this.getPathReources('pen.svg','light'),
+    dark:  this.getPathReources('pen.svg','dark')
   };
 
   iconStructural = {
-    light: path.join(__filename, '..', '..', 'resources', 'light', 'wall.svg'),
-    dark: path.join(__filename, '..', '..',  'resources', 'dark', 'wall.svg')
+    light: this.getPathReources('wall.svg','light'),
+    dark:  this.getPathReources('wall.svg','dark')
   };
 
   constructor() {
@@ -52,7 +54,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
             [               
               new TreeItem(this.iconBehavioral, 'Behavioral','PHP/Behavioral', '', 
                           [ 
-                            new TreeItem("", 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            new TreeItem('', 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
@@ -128,12 +130,10 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
           /** if the last element == learn, need open the page with we can learn about that pattern */
           if(e.selection[0].contextValue, e.selection[0].description === 'learn') {  
 
-             
-              vscode.env.openExternal(vscode.Uri.parse(e.selection[0].contextValue || ""));
-
-                   
+            vscode.env.openExternal(vscode.Uri.parse(e.selection[0].contextValue || "")); 
+              
           }
-          
+
           /** Here is calling the director when will validate wich pattern need be implementd */
           /** Call the Director to select handler will process the request */
           (new Director(e.selection[0].contextValue, e.selection[0].description)).run();
@@ -170,7 +170,12 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
       return directory;
   }
 
+  getPathReources( fileName: string, theme: string): string {
+    return path.join(__filename, '..', '..', 'resources', theme, fileName);
+  }
+
 }
+
 
 class TreeItem extends vscode.TreeItem {
   children: TreeItem[]|undefined;
@@ -183,7 +188,8 @@ class TreeItem extends vscode.TreeItem {
               label: string, 
               contextValue: string, 
               description: string, 
-              children?: TreeItem[]) 
+              children?: TreeItem[]
+              ) 
       {
     super(
         label,       
