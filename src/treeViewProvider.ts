@@ -72,6 +72,11 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/factory-method','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Factory','php')
+                            ]),
+                            new TreeItem("", 'AbstractFactory','PHP/Creational/AbstractFactory', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/factory-method','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/AbstractFactory','php')
                             ])
                           ]
                     ),

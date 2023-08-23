@@ -1,6 +1,6 @@
 <?php 
 
-require 'AUTOLOAD_PATH'; <-- verify autoload path
+require 'AUTOLOAD_PATH'; //<-- verify autoload path
 
 use YOUR_NAMESPACE\Products\WoodModels\FurnitureWoodFactory;
 use YOUR_NAMESPACE\Products\IronModels\FurnitureIronFactory;

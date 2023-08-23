@@ -1,8 +1,8 @@
 <?php 
 
-namespace src\AbstractFactory\Products\WoodModels;
+namespace YOUR_NAMESPACE\Products\WoodModels;
 
-use src\AbstractFactory\Products\Interfaces\ProductInterface;
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
 
 /**
  * Conctrete product for wooden sofa
