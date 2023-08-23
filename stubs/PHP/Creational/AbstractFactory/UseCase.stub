@@ -1,0 +1,31 @@
+<?php 
+
+require 'AUTOLOAD_PATH'; <-- verify autoload path
+
+use YOUR_NAMESPACE\Products\WoodModels\FurnitureWoodFactory;
+use YOUR_NAMESPACE\Products\IronModels\FurnitureIronFactory;
+use YOUR_NAMESPACE\Products\FactoryProducts;
+
+$woodProducts = new FactoryProducts(new FurnitureWoodFactory());
+$ironProducts = new FactoryProducts(new FurnitureIronFactory());
+
+echo "---------------------------------------------" . PHP_EOL;
+echo "Wood Products" . PHP_EOL;
+echo "---------------------------------------------" . PHP_EOL;
+echo "Table: " . $woodProducts->makeTable()->price() . PHP_EOL;
+echo "Chair: " . $woodProducts->makeChair()->price() . PHP_EOL;
+echo "Sofa: "  . $woodProducts->makeSofa()->price()  . PHP_EOL;
+echo "---------------------------------------------" . PHP_EOL;
+echo PHP_EOL;
+echo "---------------------------------------------" . PHP_EOL;
+echo "Iron Products" . PHP_EOL;
+echo "---------------------------------------------" . PHP_EOL;
+echo "Table: " . $ironProducts->makeTable()->price() . PHP_EOL;
+echo "Chair: " . $ironProducts->makeChair()->price() . PHP_EOL;
+echo "Sofa: "  . $ironProducts->makeSofa()->price()  . PHP_EOL;
+echo "---------------------------------------------" . PHP_EOL;
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//

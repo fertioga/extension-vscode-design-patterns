@@ -1,0 +1,23 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\IronModels;
+
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
+
+/**
+ * Concrete product for iron chair
+ * Implements ProductInterface
+ */
+class IronChair implements ProductInterface
+{    
+    public function price()
+    {
+        return 50;
+    }
+
+    public function material()
+    {
+        return 'iron';
+    }
+
+}

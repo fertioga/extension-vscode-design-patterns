@@ -1,0 +1,13 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\Interfaces;
+
+/**
+ * Abstract Class for all factories
+ */
+abstract class FurnitureAbstractFactory
+{   
+    public abstract function makeTable(): ProductInterface;
+    public abstract function makeChair(): ProductInterface;
+    public abstract function makeSofa(): ProductInterface;
+}

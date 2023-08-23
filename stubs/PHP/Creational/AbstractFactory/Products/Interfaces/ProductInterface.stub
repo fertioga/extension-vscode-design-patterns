@@ -1,0 +1,13 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\Interfaces;
+
+/**
+ * Interface for all products
+ */
+interface ProductInterface
+{
+    public function price();
+    public function material();
+
+}

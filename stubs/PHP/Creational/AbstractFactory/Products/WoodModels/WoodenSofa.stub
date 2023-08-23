@@ -1,0 +1,23 @@
+<?php 
+
+namespace src\AbstractFactory\Products\WoodModels;
+
+use src\AbstractFactory\Products\Interfaces\ProductInterface;
+
+/**
+ * Conctrete product for wooden sofa
+ * Implements ProductInterface
+ */
+class WoodenSofa implements ProductInterface
+{
+    public function price()
+    {
+        return 300;
+    }
+
+    public function material()
+    {
+        return 'wood';
+    }
+
+}

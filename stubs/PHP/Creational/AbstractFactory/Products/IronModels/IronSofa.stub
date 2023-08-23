@@ -1,0 +1,23 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\IronModels;
+
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
+
+/**
+ * Concrete product for iron sofa
+ * Inherits ProductInterface
+ */
+class IronSofa implements ProductInterface
+{
+    public function price()
+    {
+        return 300;
+    }
+
+    public function material()
+    {
+        return 'iron';
+    }
+
+}

@@ -13,8 +13,8 @@ class Product1Factory extends ProductAbstractFactory
      * One possible logic is to create a product based on a parameter
      * but it will agaist the Open-Closed Principle (SOLID)
      * 
-     * Mabe you can use __construct() to inject some dependencies, 
-     * epecific logic or inversion of control (IoC) container
+     * Mabe you need to use __construct() to inject some dependencies, 
+     * especific logic or inversion of control (IoC) container
      */
 
     public function __construct()

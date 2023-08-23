@@ -1,0 +1,50 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\WoodModels;
+
+use YOUR_NAMESPACE\Products\Interfaces\FurnitureAbstractFactory;
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
+
+/**
+ * Concrete factory for wooden furniture
+ * Implements FurnitureInterface
+ */
+class FurnitureWoodFactory extends FurnitureAbstractFactory
+{
+    /** 
+     * Maybe you need to use __construct() to inject some dependencies, 
+     * especific logic or inversion of control (IoC) container
+     */
+    public function __construct()
+    {
+       //..
+    }
+
+    /**
+     * Concrete factory for table
+     * @return ProductInterface
+     */
+    public function makeTable(): ProductInterface
+    {
+        return new WoodenTable();
+    }
+
+    /**
+     * Concrete factory for chair
+     * @return ProductInterface
+     */
+    public function makeChair(): ProductInterface
+    {
+        return new WoodenChair();
+    }
+
+    /**
+     * Concrete factory for sofa
+     * @return ProductInterface
+     */
+    public function makeSofa(): ProductInterface
+    {
+        return new WoodenSofa();
+    }
+
+}

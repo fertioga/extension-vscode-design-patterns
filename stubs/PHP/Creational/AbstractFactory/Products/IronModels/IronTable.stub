@@ -1,0 +1,23 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\IronModels;
+
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
+
+/**
+ * Concrete product for iron table
+ * Implements ProductInterface
+ */
+class IronTable implements ProductInterface
+{
+    public function price()
+    {
+        return 200;
+    }
+
+    public function material()
+    {
+        return 'iron';
+    }
+
+}

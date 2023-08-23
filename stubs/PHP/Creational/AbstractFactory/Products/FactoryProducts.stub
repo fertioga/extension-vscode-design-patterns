@@ -1,0 +1,53 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products;
+
+use YOUR_NAMESPACE\Products\Interfaces\FurnitureAbstractFactory;
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
+
+/**
+ * Concrete factory for all products
+ * Inherits FurnitureAbstractFactory
+ * 
+ * This class is the main class for all products 
+ * and works like a director to call the concrete factories
+ */
+class FactoryProducts extends FurnitureAbstractFactory
+{
+    private FurnitureAbstractFactory $factory;
+
+    public function __construct($factory)
+    {
+        $this->factory = $factory;
+    }
+
+    /**
+     * Call the concrete factory to make a table
+     * 
+     * @return ProductInterface
+     */
+    public function makeTable(): ProductInterface
+    {
+        return $this->factory->makeTable();
+    }
+
+    /**
+     * Call the concrete factory to make a chair
+     * 
+     * @return ProductInterface
+     */
+    public function makeChair(): ProductInterface
+    {
+        return $this->factory->makeChair();
+    }
+
+    /**
+     * Call the concrete factory to make a sofa
+     * 
+     * @return ProductInterface
+     */
+    public function makeSofa(): ProductInterface
+    {
+        return $this->factory->makeSofa();
+    }
+}

@@ -1,0 +1,23 @@
+<?php 
+
+namespace YOUR_NAMESPACE\Products\WoodModels;
+
+use YOUR_NAMESPACE\Products\Interfaces\ProductInterface;
+
+/**
+ * Concrete product for wooden table
+ * Implements ProductInterface
+ */
+class WoodenTable implements ProductInterface
+{
+    public function price()
+    {
+        return 100;
+    }
+
+    public function material()
+    {
+        return 'wood';
+    }
+
+}
