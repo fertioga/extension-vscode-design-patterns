@@ -18,3 +18,5 @@ echo "##########################################################################
 //** run composer dump-autoload **//
 //** php UseCase.php            **//
 //********************************//
+
+// Learn more about the Proxy Design Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/proxy/

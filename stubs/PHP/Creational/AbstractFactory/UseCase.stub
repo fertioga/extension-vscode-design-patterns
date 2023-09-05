@@ -29,3 +29,6 @@ echo "---------------------------------------------" . PHP_EOL;
 //** run composer dump-autoload **//
 //** php UseCase.php            **//
 //********************************//
+
+
+// Lean more about Abstract Factory Method Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/abstract-factory/

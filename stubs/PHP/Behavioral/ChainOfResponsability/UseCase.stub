@@ -19,3 +19,5 @@ $test->handler($request);
 //** run composer dump-autoload **//
 //** php UseCase.php            **//
 //********************************//
+
+// Learn more about chain of responsability pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/chain-of-responsibility/

@@ -51,21 +51,12 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
     [
       new TreeItem(
           this.iconLanguage, 'PHP', 'PHP', '',
-            [               
-              new TreeItem(this.iconBehavioral, 'Behavioral','PHP/Behavioral', '', 
-                          [ 
-                            new TreeItem('', 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
-                            [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/chain-of-responsibility','learn'),
-                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
-                            ])
-                          ]
-                    ),
+            [ 
               new TreeItem(this.iconCreational, 'Creational','PHP/Creational', '',
                           [
                             new TreeItem("", 'AbstractFactory','PHP/Creational/AbstractFactory', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/abstract-factory/','learn'),
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/abstract-factory/','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/AbstractFactory','php')
                             ]),
                             new TreeItem("", 'Builder','PHP/Creational/Builder', '',
@@ -75,35 +66,48 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                             ]),
                             new TreeItem("", 'Factory','PHP/Creational/Factory', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/factory-method','learn'),
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/factory/','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Factory','php')
                             ]),
                             new TreeItem("", 'Singleton','PHP/Creational/Singleton', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/singleton','learn'),
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/singleton/','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Singleton','php')
                             ])
                           ]
-                    ),
-              new TreeItem(this.iconStructural, 'Structural','PHP/Structural', '',
+                ),
+
+                new TreeItem(this.iconStructural, 'Structural','PHP/Structural', '',
                           [
-                            new TreeItem("", 'Proxy','PHP/Structural/Proxy', '',
+                            new TreeItem("", 'Adapter','PHP/Structural/Adapter', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/proxy','learn'),
-                              new TreeItem(this.iconApply, 'Apply','PHP/Structural/Proxy','php')
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/adapter/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Structural/Adapter','php')
                             ]),
                             new TreeItem("", 'Facade','PHP/Structural/Facade', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/facade','learn'),
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/facade/','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Structural/Facade','php')
                             ]),
-                            new TreeItem("", 'Adapter','PHP/Structural/Adapter', '',
+                            new TreeItem("", 'Proxy','PHP/Structural/Proxy', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/adapter','learn'),
-                              new TreeItem(this.iconApply, 'Apply','PHP/Structural/Adapter','php')
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/proxy/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Structural/Proxy','php')
+                            ]),
+                            
+                            
+                          ]
+                ),
+
+              new TreeItem(this.iconBehavioral, 'Behavioral','PHP/Behavioral', '', 
+                          [ 
+                            new TreeItem('', 'ChainOfResponsability','PHP/Behavioral/ChainOfResponsability', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/chain-of-responsibility/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
                             ])
                           ]
-                    ),
+                )
             ]
       )
     ];

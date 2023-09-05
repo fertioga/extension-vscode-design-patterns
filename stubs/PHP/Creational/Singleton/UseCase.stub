@@ -72,3 +72,6 @@ echo "Is the Same Instance!" . PHP_EOL;
 //** run composer dump-autoload **//
 //** php UseCase.php            **//
 //********************************//
+
+
+// Lear more about Singleton Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/singleton/

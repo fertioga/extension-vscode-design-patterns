@@ -30,3 +30,5 @@ echo "--------------------------" . PHP_EOL;
 //** run composer dump-autoload **//
 //** php UseCase.php            **//
 //********************************//
+
+// Learn more about Adapter here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/adapter/

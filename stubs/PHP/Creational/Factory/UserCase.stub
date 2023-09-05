@@ -15,3 +15,5 @@ echo $product2->getProduct() . PHP_EOL;
 //** run composer dump-autoload **//
 //** php UseCase.php            **//
 //********************************//
+
+// Lean more about Factory Method Design Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/factory/
