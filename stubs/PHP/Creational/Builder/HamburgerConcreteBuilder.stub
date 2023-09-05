@@ -1,0 +1,76 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Concrete Builder
+ * in this case, don't build a especific hamburger, but
+ * the builder itself is responsible for building the hamburger whatever
+ * the client wants. Who will decide what to build is the Director
+ */
+class HamburgerConcreteBuilder extends BuilderAbstract
+{   
+    /**
+     * Choose the type of meat
+     * @param string $type
+     * @return BuilderAbstract
+     */
+    public function addMeat(string $type): BuilderAbstract
+    {
+        $this->meet = $type;
+        return $this;
+    }
+
+    /**
+     * Choose the type of cheese
+     * @param string $type
+     * @return BuilderAbstract
+     */
+    public function addCheese(string $type): BuilderAbstract
+    {
+        $this->cheese = $type;
+        return $this;
+    }
+
+    /**
+     * Add pepperoni
+     * @param bool $bool
+     * @return BuilderAbstract
+     */
+    public function addPepperoni(bool $bool): BuilderAbstract
+    {
+        $this->pepperoni = $bool;
+        return $this;
+    }
+
+    /**
+     * Add lettuce
+     * @param bool $bool
+     * @return BuilderAbstract
+     */
+    public function addLettuce(bool $bool): BuilderAbstract
+    {
+        $this->lettuce = $bool;
+        return $this;
+    }
+
+    /**
+     * Add tomato
+     * @param bool $bool
+     * @return BuilderAbstract
+     */
+    public function addTomato(bool $bool): BuilderAbstract
+    {
+        $this->tomato = $bool;
+        return $this;
+    }
+
+    /**
+     * Build the hamburger
+     * @return Hamburger
+     */
+    public function build(): Hamburger
+    {
+        return new Hamburger($this);
+    }
+}

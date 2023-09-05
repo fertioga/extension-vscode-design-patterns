@@ -1,0 +1,40 @@
+<?php 
+
+require 'AUTOLOAD_PATH'; // <-- verify autoload path
+
+use YOUR_NAMESPACE\HamburgerDirector;
+
+/**
+ * Client
+ * in this case, the client is responsible for using the director
+ */
+$director = new HamburgerDirector();
+
+echo "----------------------------------------------------"     . PHP_EOL . PHP_EOL;
+
+echo "Hamburger - " . $director->makeHamburger()                . PHP_EOL . PHP_EOL;
+
+echo "----------------------------------------------------"     . PHP_EOL . PHP_EOL;
+
+echo "Cheeseburge - " . $director->makeCheeseburger()           . PHP_EOL . PHP_EOL;
+
+echo "----------------------------------------------------"     . PHP_EOL . PHP_EOL;
+
+echo "VeggieBurger - " . $director->makeVeggieBurger()          . PHP_EOL . PHP_EOL;
+
+echo "----------------------------------------------------"     . PHP_EOL . PHP_EOL;
+
+echo "ChickenBurger - " . $director->makeChickenBurger()        . PHP_EOL . PHP_EOL;
+
+echo "----------------------------------------------------"     . PHP_EOL . PHP_EOL;
+
+echo "BaconBurger - " . $director->makeBaconBurger()            . PHP_EOL . PHP_EOL;
+
+echo "----------------------------------------------------"     . PHP_EOL . PHP_EOL;
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//
+
+// Learn more about the Builder Design Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/builder/

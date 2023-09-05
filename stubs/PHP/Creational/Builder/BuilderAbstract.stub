@@ -1,0 +1,23 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * The Builder Abstract Class
+ * must be implemented by all concrete builders
+ */
+abstract class BuilderAbstract 
+{    
+    public $meet;
+    public $cheese;
+    public $pepperoni = false;
+    public $lettuce = false;
+    public $tomato = false;
+
+    abstract public function addMeat(string $type): BuilderAbstract;
+    abstract public function addCheese(string $type): BuilderAbstract;
+    abstract public function addPepperoni(bool $bool): BuilderAbstract;
+    abstract public function addLettuce(bool $bool): BuilderAbstract;
+    abstract public function addTomato(bool $bool): BuilderAbstract;
+    abstract public function build(): Hamburger;       
+}

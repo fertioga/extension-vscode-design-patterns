@@ -1,0 +1,37 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Concrete Product
+ * in this case, a Hamburger
+ */
+class Hamburger 
+{
+    private $meet;
+    private $cheese;
+    private $pepperoni;
+    private $lettuce;
+    private $tomato;
+
+    public function __construct(BuilderAbstract $builder)
+    {
+        $this->meet      = $builder->meet;
+        $this->cheese    = $builder->cheese;
+        $this->pepperoni = $builder->pepperoni;
+        $this->lettuce   = $builder->lettuce;
+        $this->tomato    = $builder->tomato;
+    }
+
+    public function __toString()
+    {
+        return sprintf(
+            'Meet: %s, Cheese: %s, Pepperoni: %s, Lettuce: %s, Tomato: %s',
+            $this->meet,
+            $this->cheese,
+            $this->pepperoni,
+            $this->lettuce,
+            $this->tomato
+        );
+    }
+}

@@ -1,0 +1,94 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Director
+ * in this case, the director is responsible for building the hamburger whatever
+ * the client wants.
+ * The director is responsible for the order of the steps required to build the
+ * hamburger.
+ */
+class HamburgerDirector
+{   
+    /**
+     * The builder
+     * @var BuilderAbstract
+     */
+    private $builder;
+    
+    public function __construct()
+    {
+        $this->builder = new HamburgerConcreteBuilder();
+    }
+
+    /**
+     * Build step by step the hamburger
+     */
+    public function makeHamburger(): Hamburger
+    {
+        return $this->builder
+            ->addMeat('Beef')
+            ->addCheese('Cheddar')
+            ->addPepperoni(true)
+            ->addLettuce(true)
+            ->addTomato(true)
+            ->build();
+    }
+
+    /**
+     * Build step by step the cheeseburger
+     */
+    public function makeCheeseburger(): Hamburger
+    {
+        return $this->builder
+            ->addMeat('Beef')
+            ->addCheese('Provolone')
+            ->addPepperoni(false)
+            ->addLettuce(true)
+            ->addTomato(true)
+            ->build();
+    }
+
+    /**
+     * Build step by step the veggie burger
+     */
+    public function makeVeggieBurger(): Hamburger
+    {
+        return $this->builder
+            ->addMeat('Veggie')
+            ->addCheese('Vegan Cheese')
+            ->addPepperoni(false)
+            ->addLettuce(true)
+            ->addTomato(true)
+            ->build();
+    }
+
+    /**
+     * Build step by step the chicken burger
+     */
+    public function makeChickenBurger(): Hamburger
+    {
+        return $this->builder
+            ->addMeat('Chicken')
+            ->addCheese('Cheddar')
+            ->addPepperoni(false)
+            ->addLettuce(true)
+            ->addTomato(true)
+            ->build();
+    }
+
+    /**
+     * Build step by step the bacon burger
+     */
+    public function makeBaconBurger(): Hamburger
+    {
+        return $this->builder
+            ->addMeat('Beef')
+            ->addCheese('American')
+            ->addPepperoni(false)
+            ->addLettuce(true)
+            ->addTomato(true)
+            ->build();
+    }
+}

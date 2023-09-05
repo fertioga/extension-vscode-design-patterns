@@ -63,20 +63,25 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                     ),
               new TreeItem(this.iconCreational, 'Creational','PHP/Creational', '',
                           [
-                            new TreeItem("", 'Singleton','PHP/Creational/Singleton', '',
+                            new TreeItem("", 'AbstractFactory','PHP/Creational/AbstractFactory', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/singleton','learn'),
-                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/Singleton','php')
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/abstract-factory/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/AbstractFactory','php')
+                            ]),
+                            new TreeItem("", 'Builder','PHP/Creational/Builder', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/builder/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/Builder','php')
                             ]),
                             new TreeItem("", 'Factory','PHP/Creational/Factory', '',
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/factory-method','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Factory','php')
                             ]),
-                            new TreeItem("", 'AbstractFactory','PHP/Creational/AbstractFactory', '',
+                            new TreeItem("", 'Singleton','PHP/Creational/Singleton', '',
                             [
-                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/factory-method','learn'),
-                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/AbstractFactory','php')
+                              new TreeItem(this.iconLearn, 'Learn more','https://refactoring.guru/design-patterns/singleton','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/Singleton','php')
                             ])
                           ]
                     ),
