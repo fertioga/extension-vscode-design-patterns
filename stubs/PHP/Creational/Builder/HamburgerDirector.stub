@@ -11,11 +11,11 @@ namespace YOUR_NAMESPACE;
  */
 class HamburgerDirector
 {   
-    /**
+     /**
      * The builder
      * @var BuilderAbstract
      */
-    private $builder;
+    private BuilderAbstract $builder;
     
     public function __construct()
     {

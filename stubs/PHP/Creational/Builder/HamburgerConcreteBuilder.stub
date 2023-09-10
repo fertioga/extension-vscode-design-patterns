@@ -13,9 +13,9 @@ class HamburgerConcreteBuilder extends BuilderAbstract
     /**
      * Choose the type of meat
      * @param string $type
-     * @return BuilderAbstract
+     * @return HamburgerConcreteBuilder
      */
-    public function addMeat(string $type): BuilderAbstract
+    public function addMeat(string $type): HamburgerConcreteBuilder
     {
         $this->meet = $type;
         return $this;
@@ -24,9 +24,9 @@ class HamburgerConcreteBuilder extends BuilderAbstract
     /**
      * Choose the type of cheese
      * @param string $type
-     * @return BuilderAbstract
+     * @return HamburgerConcreteBuilder
      */
-    public function addCheese(string $type): BuilderAbstract
+    public function addCheese(string $type): HamburgerConcreteBuilder
     {
         $this->cheese = $type;
         return $this;
@@ -35,9 +35,9 @@ class HamburgerConcreteBuilder extends BuilderAbstract
     /**
      * Add pepperoni
      * @param bool $bool
-     * @return BuilderAbstract
+     * @return HamburgerConcreteBuilder
      */
-    public function addPepperoni(bool $bool): BuilderAbstract
+    public function addPepperoni(bool $bool): HamburgerConcreteBuilder
     {
         $this->pepperoni = $bool;
         return $this;
@@ -46,9 +46,9 @@ class HamburgerConcreteBuilder extends BuilderAbstract
     /**
      * Add lettuce
      * @param bool $bool
-     * @return BuilderAbstract
+     * @return HamburgerConcreteBuilder
      */
-    public function addLettuce(bool $bool): BuilderAbstract
+    public function addLettuce(bool $bool): HamburgerConcreteBuilder
     {
         $this->lettuce = $bool;
         return $this;
@@ -57,9 +57,9 @@ class HamburgerConcreteBuilder extends BuilderAbstract
     /**
      * Add tomato
      * @param bool $bool
-     * @return BuilderAbstract
+     * @return HamburgerConcreteBuilder
      */
-    public function addTomato(bool $bool): BuilderAbstract
+    public function addTomato(bool $bool): HamburgerConcreteBuilder
     {
         $this->tomato = $bool;
         return $this;

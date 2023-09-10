@@ -8,11 +8,11 @@ namespace YOUR_NAMESPACE;
  */
 abstract class BuilderAbstract 
 {    
-    public $meet;
-    public $cheese;
-    public $pepperoni = false;
-    public $lettuce = false;
-    public $tomato = false;
+    public string $meet;
+    public string $cheese;
+    public bool $pepperoni = false;
+    public bool $lettuce = false;
+    public bool $tomato = false;
 
     abstract public function addMeat(string $type): BuilderAbstract;
     abstract public function addCheese(string $type): BuilderAbstract;
