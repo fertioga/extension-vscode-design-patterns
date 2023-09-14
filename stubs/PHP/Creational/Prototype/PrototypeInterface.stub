@@ -1,0 +1,13 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+interface PrototypeInterface
+{
+   /**
+    * In PHP this method is not necessary
+    * but in other languages it is necessary to implement this method
+    * @return void
+    */
+   public function __clone();
+}   

@@ -1,0 +1,38 @@
+<?php 
+
+require 'AUTOLOAD_PATH'; // <-- verify autoload path
+
+use YOUR_NAMESPACE\BoxPrototype;
+
+// create prototype
+$prototype = new BoxPrototype();
+
+// create model A based on prototype
+$modelA = clone $prototype;
+$modelA->bow->color     = "#8a1d1d";
+
+// create model B based on prototype
+$ModelB = clone $prototype;
+$ModelB->width  = 20.0;
+$ModelB->height = 20.0;
+$ModelB->length = 20.0;
+$ModelB->color  = "#ff0066";
+$ModelB->bow->position = "top";
+$ModelB->bow->color    = "#ff9900";
+
+echo $prototype . PHP_EOL;
+echo $modelA    . PHP_EOL;
+echo $ModelB    . PHP_EOL;
+
+//**********************************************************************************//
+//** Obs: In this example the product is a simple object,                         **//
+//** but it can be a complex object with many properties and objects inside it.   **//
+//** In this case, the prototype pattern is very useful.                          **//          
+//**********************************************************************************//
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//
+
+// Learn more about the Prototype Design Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/prototype/

@@ -32,7 +32,7 @@ export class Php extends HandlerAbstract {
                
                 vscode.window.showInputBox({
                     placeHolder: "../../vendor/autoload.php",
-                    prompt: "Put your autoload path to use ExampleUse.php",
+                    prompt: "Put your autoload path to use UseCase.php",
                     value: "../../vendor/autoload.php"
                   })
                   .then(pathAutoload => {

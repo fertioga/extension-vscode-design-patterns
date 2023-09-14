@@ -1,0 +1,41 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+class BoxPrototype implements PrototypeInterface
+{
+    // default values
+    public float $width  = 10.0;
+    public float $height = 10.0;
+    public float $length = 10.0; 
+    public string $color = "#ffffff";
+    public BowPrototype $bow;
+
+    /**
+     * BoxPrototype constructor.
+     */
+    public function __construct()
+    {
+        $this->bow = new BowPrototype();
+    }
+    
+    /**
+     * When clone object, clone bow object too
+     */
+    public function __clone()
+    {
+        /**
+         * Clone bow object
+         */
+        return $this->bow = clone $this->bow;
+    }
+    
+    /**
+     * Return string with box properties
+     * @return string
+     */
+    public function __toString(): string
+    {
+        return "Box width: {$this->width}, height: {$this->height}, length: {$this->length}, color: {$this->color}, bow: {$this->bow}";
+    }
+}

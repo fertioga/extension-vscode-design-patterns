@@ -69,6 +69,11 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                               new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/factory/','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Creational/Factory','php')
                             ]),
+                            new TreeItem("", 'Prototype','PHP/Creational/Prototype', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/prototype/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Creational/Prototype','php')
+                            ]),
                             new TreeItem("", 'Singleton','PHP/Creational/Singleton', '',
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/singleton/','learn'),

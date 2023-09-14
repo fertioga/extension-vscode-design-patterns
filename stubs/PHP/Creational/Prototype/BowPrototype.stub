@@ -1,0 +1,21 @@
+<?php 
+
+
+namespace YOUR_NAMESPACE;
+
+class BowPrototype implements PrototypeInterface
+{
+    // default values
+    public $color    = "#ffffff"; 
+    public $position = "front";
+
+    public function __clone()
+    {
+        // do same thing when cloning
+    }
+
+    public function __toString(): string
+    {
+        return "Bow color: {$this->color}, position: {$this->position}";
+    }
+}
