@@ -1,0 +1,52 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Use this trait in your observable class
+ * Trait is a good idea because you can use it in multiple classes
+ * and you can change the implementation without changing the class
+ */
+trait ObservableTrait
+{
+    /**
+     * @var ObserverInterface[]
+     */
+    private $observers = [];
+
+    /**
+     * Add observer
+     * @param ObserverInterface $observer
+     * @return void
+     */
+    public function addObserver(ObserverInterface $observer): void
+    {
+        $this->observers[] = $observer;
+    }
+
+    /**
+     * Remove observer
+     * @param ObserverInterface $observer
+     * @return void
+     */
+    public function removeObserver(ObserverInterface $observer): void
+    {
+        $key = array_search($observer, $this->observers);
+        if ($key !== false) {
+            unset($this->observers[$key]);
+        }
+    }
+
+    /**
+     * Notify observers
+     * @param string $event | in your observer class, you can use this to filter events
+     * @return void
+     */
+    public function notifyObservers(string $event, string $data): void
+    {
+        // notify all observers registered
+        foreach ($this->observers as $observer) {
+            $observer->update($event, $data);
+        }
+    }
+}

@@ -1,0 +1,44 @@
+<?php
+
+require 'AUTOLOAD_PATH'; // <-- verify autoload path
+
+use YOUR_NAMESPACE\Purchase;
+
+// use YOUR_NAMESPACE\PurchaseObserverA;
+// use YOUR_NAMESPACE\PurchaseObserverB;
+
+/**
+ * Instance Purchase 
+ * Purchase is a observable class
+ * and you can add or remove observers when
+ * instance this class.
+ * In your case, the obsevers was added in constructor of class Model
+ */
+$purchase = new Purchase();
+
+//***************************************************** */
+//** if you want add or remove observers after instance */
+//***************************************************** */
+
+// $observerA = new PurchaseObserverA('Observer A');
+// $observerB = new PurchaseObserverB('Observer B');
+// $purchase->addObserver($observerA);
+// $purchase->addObserver($observerB);
+// $purchase->removeObserver($observerA);
+
+//************************ OBS ******************************** */
+//** You can add new observers to do especific things.          */
+//** For example, you can add a observer to send email,         */
+//** other to send sms, other to send notification, etc.        */
+//** All observers will be notified when the event is triggered */
+//************************************************************* */
+
+$purchase->create("create Purchase with same value"); //->EVENT TRIGGERED!
+$purchase->payment(100); //->EVENT TRIGGERED!
+
+//********************************//
+//** run composer dump-autoload **//
+//** php UseCase.php            **//
+//********************************//
+
+// Learn more about the Builder Design Pattern here: https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/observer/

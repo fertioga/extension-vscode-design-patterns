@@ -1,0 +1,15 @@
+<?php
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * Interface ObserverInterface
+ * All observers must implement this interface
+ */
+interface ObserverInterface
+{   
+    /**
+     * This method is called when observable class notify observers
+     */
+    public function update(string $event, string $data): void;
+}

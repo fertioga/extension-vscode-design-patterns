@@ -1,0 +1,46 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * PurchaseObserver class listen events from Purchase class
+ */
+class PurchaseObserver implements ObserverInterface
+{
+    /**
+     * Observer name
+     * You can use this to identify the observer
+     */
+    private string $name;
+
+    /**
+     * When you instance this class, you need pass a name
+     */
+    public function __construct(string $name)
+    {
+        $this->name = $name;
+    }
+    
+    /**
+     * This method is called when observable class notify observers
+     * @param string $event | in your observer class, you can use this to filter events
+     * @return void
+     * 
+     * OBS: Each observer can listen one or more events and is not a good idea
+     * use if/else or switch to filter events. You can use different observer classes 
+     * or implement a strategy pattern to filter events. 
+     * This is a simple example.
+     */
+    public function update(string $event, string $data): void
+    {
+        if($event === 'CREATE_PURCHASE') {
+            // do something
+        }
+
+        if($event === 'PAYMENT_PURCHASE') {
+            echo "------------------------------------------------------------------------------\n";
+            echo "{$this->name} - Event: {$event}. Send Email to the boss!\n";
+            echo "------------------------------------------------------------------------------\n";
+        }
+    }
+}

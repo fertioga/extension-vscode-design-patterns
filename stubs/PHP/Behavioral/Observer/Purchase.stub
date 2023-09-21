@@ -1,0 +1,57 @@
+<?php 
+
+namespace YOUR_NAMESPACE;
+
+/**
+ * I want observe this class
+ * So, I use ObservableTrait
+ */
+class Purchase 
+{
+    use ObservableTrait; // <-- use trait
+
+    private string $data;
+
+    /**
+     * register observers
+     * most be one or more observers
+     * and you can add or remove observers when
+     * instance this class
+     */
+    public function __construct()
+    {
+        /**
+         * Add observers.
+         * Maybe is better use a factory 
+         * or a dependency injection container.
+         * Another option is configure observers in the moment
+         * that you instance this class. (like commented example in UseCase.php)
+         */
+        $this->addObserver(new PurchaseObserver('Purchase Observer')); // <-- register observer
+    }
+
+    /**
+     * This methods change data
+     * and notify observers
+     */
+    public function create(string $data):void
+    {
+        $this->data = $data;
+
+        $this->notifyObservers('CREATE_PURCHASE', $this->data); // <-- notify observers 
+    }
+
+    /** 
+     * This methods change data
+     * and notify observers
+     */
+    public function payment(float $price):void
+    {
+        if($price > 0) {
+
+            $this->notifyObservers('PAYMENT_PURCHASE', $this->data); // <-- notify observers
+
+        }        
+    }
+
+}

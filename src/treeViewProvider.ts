@@ -110,6 +110,11 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
                             [
                               new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/chain-of-responsibility/','learn'),
                               new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/ChainOfResponsability','php')
+                            ]),
+                            new TreeItem('', 'Observer','PHP/Behavioral/Observer', '',
+                            [
+                              new TreeItem(this.iconLearn, 'Learn more','https://fernando-franca.tec.br/d3v/plugins/vs-code/design-patterns/observer/','learn'),
+                              new TreeItem(this.iconApply, 'Apply','PHP/Behavioral/Observer','php')
                             ])
                           ]
                 )
