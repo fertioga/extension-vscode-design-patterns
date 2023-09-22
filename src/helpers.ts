@@ -1,7 +1,5 @@
 import * as vscode from 'vscode';
 
-const panel = vscode.window.createWebviewPanel("Design Pattern Plugin","Design Pattern Plugin",1);
-
 var path = require('path');
 
 export function getFsInstance() {

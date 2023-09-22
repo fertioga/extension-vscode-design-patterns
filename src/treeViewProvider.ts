@@ -2,7 +2,6 @@
 import * as vscode from 'vscode';
 import * as fs from 'fs';
 import * as helper from './helpers';
-import * as webview from './webviews/webviews';
 import { Director } from './languages/Director';
 import * as path from 'path';
 

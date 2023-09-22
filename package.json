@@ -27,10 +27,7 @@
     "PHP",
     "patterns",
     "principal patterns"
-  ],
-  "activationEvents": [
-    "*"
-  ],
+  ], 
   "main": "./out/extension.js",
   "contributes": {  
       "menus": {
