@@ -4,6 +4,7 @@ import * as fs from 'fs';
 import * as helper from './helpers';
 import { Director } from './languages/Director';
 import * as path from 'path';
+import * as webview from './webviews/webviews';
 
 export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
   
@@ -13,6 +14,10 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
   data: TreeItem[] = [];
   pathClicked: string[] = [];
   
+  iconQuestion = {
+    light: this.getPathReources('question.svg','light'),
+    dark:  this.getPathReources('question.svg','dark')
+  };
 
   iconLanguage = {
     light: this.getPathReources('code.svg','light'),
@@ -48,6 +53,17 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 
     this.data =     
     [
+      new TreeItem(this.iconQuestion, 'How it works?','', '',
+      [
+        new TreeItem('', '1 - Select your Language','', '',) ,
+        new TreeItem('', '2 - Select the Pattern','', '',) ,
+        new TreeItem('', '3 - Click in Apply','', '',) ,
+        new TreeItem('', '4 - Choose the path where you want apply','', '',),
+        new TreeItem('', '5 - Learn, change and use!','', '',),
+        new TreeItem('', 'Readme','', 'readme',) 
+      ]
+       
+      ),
       new TreeItem(
           this.iconLanguage, 'PHP', 'PHP', '',
             [ 
@@ -155,6 +171,13 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
 
             vscode.env.openExternal(vscode.Uri.parse(e.selection[0].contextValue || "")); 
               
+          }
+
+          /** Open Readme page */
+          if(e.selection[0].contextValue, e.selection[0].description === 'readme') {
+
+            webview.pageReadme();
+            
           }
 
           /** Here is calling the director when will validate wich pattern need be implementd */

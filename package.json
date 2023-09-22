@@ -2,7 +2,7 @@
   "name": "design-patterns",
   "displayName": "DesignPatterns",
   "description": "Build easily the principal design patterns with just one click!",
-  "icon": "img/icon.jpeg",
+  "icon": "img/logo.png",
   "version": "0.0.6",
   "publisher": "fertioga",
   "engines": {

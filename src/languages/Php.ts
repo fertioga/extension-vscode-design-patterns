@@ -92,6 +92,15 @@ export class Php extends HandlerAbstract {
                 vscode.window.showInformationMessage(header, options, ...["Ok"]).then((item)=>{
 
                     if(item !== undefined) {
+                        
+                        // refresh menu
+                        vscode.commands.executeCommand('designpatterns.refreshEntry');
+
+                        // uncollapsed treeview
+                        vscode.commands.executeCommand('workbench.files.action.treeview.uncollapsed'); 
+
+                        //vscode.commands.executeCommand('workbench.files.action.uncollapsedExplorerFolders');
+
                         // redirect to explorator crt + shift + e
                         vscode.commands.executeCommand('workbench.files.action.showActiveFileInExplorer');
                     } 
