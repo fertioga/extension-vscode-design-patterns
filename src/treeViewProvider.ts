@@ -65,7 +65,7 @@ export class TreeViewProvider implements vscode.TreeDataProvider<TreeItem> {
        
       ),
       new TreeItem(
-          this.iconLanguage, 'PHP', 'PHP', '',
+          this.iconLanguage, 'PHP', 'PHP', '>=7.0',
             [ 
               new TreeItem(this.iconCreational, 'Creational','PHP/Creational', '',
                           [

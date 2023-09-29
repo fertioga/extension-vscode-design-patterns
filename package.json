@@ -3,7 +3,7 @@
   "displayName": "DesignPatterns",
   "description": "Build easily the principal design patterns with just one click!",
   "icon": "img/logo.png",
-  "version": "0.0.6",
+  "version": "1.0.1",
   "publisher": "fertioga",
   "engines": {
     "vscode": "^1.74.0"
@@ -29,6 +29,7 @@
     "principal patterns"
   ], 
   "main": "./out/extension.js",
+  "activationEvents": ["*"],
   "contributes": {  
       "menus": {
         "view/title": [
